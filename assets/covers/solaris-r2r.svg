@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#041511"/>
+      <stop offset="60%" stop-color="#08241d"/>
+      <stop offset="100%" stop-color="#030807"/>
+    </linearGradient>
+    <radialGradient id="em" cx="50%" cy="46%" r="52%">
+      <stop offset="0%" stop-color="#30d158" stop-opacity="0.55"/>
+      <stop offset="55%" stop-color="#00c7be" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg)"/>
+  <circle cx="300" cy="275" r="265" fill="url(#em)"/>
+  <g fill="none" stroke="#30d158" stroke-width="1.8" opacity="0.82">
+    <rect x="155" y="130" width="290" height="290" rx="18"/>
+    <rect x="190" y="165" width="220" height="220" rx="14" opacity="0.72"/>
+    <rect x="225" y="200" width="150" height="150" rx="10" opacity="0.54"/>
+    <rect x="260" y="235" width="80" height="80" rx="6" stroke="#ffffff"/>
+  </g>
+  <text x="48" y="520" fill="#ffffff" font-family="-apple-system, Helvetica Neue, sans-serif" font-size="24" font-weight="700" letter-spacing="3">SOLARIS ARPEGGIO</text>
+  <text x="48" y="550" fill="#30d158" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" letter-spacing="2">R2R LADDER • 705.6 KHZ LNS15 NOS</text>
+</svg>

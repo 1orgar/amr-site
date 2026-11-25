@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1d0b07"/>
+      <stop offset="50%" stop-color="#2e1209"/>
+      <stop offset="100%" stop-color="#090606"/>
+    </linearGradient>
+    <radialGradient id="amber" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff9f0a" stop-opacity="0.65"/>
+      <stop offset="50%" stop-color="#ff453a" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg)"/>
+  <circle cx="300" cy="290" r="260" fill="url(#amber)"/>
+  <g stroke="#ff9f0a" fill="none" stroke-width="2.2" opacity="0.78">
+    <path d="M 70 290 Q 185 120 300 290 T 530 290"/>
+    <path d="M 70 290 Q 185 160 300 290 T 530 290" opacity="0.6"/>
+    <path d="M 70 290 Q 185 460 300 290 T 530 290"/>
+    <path d="M 70 290 Q 185 420 300 290 T 530 290" opacity="0.6"/>
+  </g>
+  <line x1="70" y1="195" x2="530" y2="195" stroke="#ff453a" stroke-width="2" stroke-dasharray="6 6"/>
+  <line x1="70" y1="385" x2="530" y2="385" stroke="#ff453a" stroke-width="2" stroke-dasharray="6 6"/>
+  <text x="48" y="520" fill="#ffffff" font-family="-apple-system, Helvetica Neue, sans-serif" font-size="24" font-weight="800" letter-spacing="2">MAGNETIC HORIZON</text>
+  <text x="48" y="550" fill="#ff9f0a" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" letter-spacing="2">2008 LOUDNESS REMASTER • DR5</text>
+</svg>

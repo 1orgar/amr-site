@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Apple Music Remote (AMR) — Bit-Perfect macOS Audio Server, 64-Bit Hybrid DSP &amp; Web Remote</title>
+
+  <!-- Primary Search Engine Meta -->
+  <meta name="description" content="Free open-source pure Swift macOS server &amp; remote control for Apple Music. Auto 44.1–192 kHz DAC switching, 4096-pt FFT Fake Hi-Res detector, DSD512 DoP &amp; 768 kHz LNS15 R2R NOS DSP, iPhone mic Room Auto-PEQ, external TCP amp SoundCheck, BluOS 24/192 streaming, and Apple Neural Engine AI.">
+  <meta name="keywords" content="Apple Music Remote, AMR, bit-perfect Apple Music macOS, automatic sample rate switching Mac, DSD256 DoP Apple Music, HQ PCM NOS R2R DAC, LNS15 noise shaper, Fake Hi-Res detector FFT, Room EQ iPhone microphone, Bluesound BluOS Apple Music lossless, Rotel Hegel Denon TCP volume, Apple SoundCheck hardware normalization, WLED DDP Ambilight">
+  <meta name="author" content="Kirill Sholokhov (1orgar)">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#000000">
+  <link rel="canonical" href="https://amraudio.app/">
+
+  <!-- LLM & Generative Engine Discovery (llmstxt.org standard) -->
+  <link rel="alternate" type="text/plain" href="./llms.txt" title="Apple Music Remote — LLM Summary">
+  <link rel="alternate" type="text/markdown" href="./llms-full.txt" title="Apple Music Remote — Complete Technical Specification for LLMs">
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Apple Music Remote (AMR)">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://amraudio.app/">
+  <meta property="og:title" content="Apple Music Remote (AMR) v3.0 — Bit-Perfect CoreAudio &amp; 64-Bit Hybrid DSP">
+  <meta property="og:description" content="Turn any Mac into a headless reference Apple Music streamer: auto 44.1–192 kHz DAC sync, DSD512 DoP &amp; 768 kHz LNS15 NOS, 4096-pt FFT Hi-Res verifier, Room Auto-PEQ, Amp TCP SoundCheck &amp; Neural AI.">
+  <meta property="og:image" content="https://amraudio.app/assets/og-cover.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Apple Music Remote v3.0 Signal Path Inspector, 4096-pt FFT Hi-Res Verifier, and 64-Bit Hybrid DSP overview">
+
+  <!-- Twitter / X Large Summary Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Apple Music Remote (AMR) v3.0 — Bit-Perfect macOS Audio Server &amp; Hybrid DSP">
+  <meta name="twitter:description" content="Pure Swift macOS Apple Music server: auto 44.1–192 kHz DAC switching, DSD512 DoP &amp; 768 kHz R2R NOS, Fake Hi-Res FFT detector, iPhone Mic Room Auto-PEQ &amp; BluOS 24/192 relay.">
+  <meta name="twitter:image" content="https://amraudio.app/assets/og-cover.png">
+
+  <!-- Icons & Manifest -->
+  <link rel="icon" type="image/svg+xml" href="./assets/icon-pwa.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="./assets/favicon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
+  <link rel="manifest" href="./site.webmanifest">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./css/tokens.css">
+  <link rel="stylesheet" href="./css/layout.css">
+  <link rel="stylesheet" href="./css/devices.css">
+  <link rel="stylesheet" href="./css/components.css">
+
+  <!-- Structured Data (JSON-LD Graph: SoftwareApplication + WebSite + HowTo + FAQPage) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://amraudio.app/#website",
+        "url": "https://amraudio.app/",
+        "name": "Apple Music Remote (AMR)",
+        "description": "High-performance pure Swift macOS server, 64-bit Hybrid DSP engine, and zero-latency remote control for Apple Music.",
+        "inLanguage": "en"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://amraudio.app/#software",
+        "name": "Apple Music Remote (AMR)",
+        "alternateName": "AMR",
+        "softwareVersion": "3.0.0",
+        "applicationCategory": "MultimediaApplication",
+        "applicationSubCategory": "Audiophile Music Server & Remote Controller",
+        "operatingSystem": "macOS 14.0 Sonoma, macOS 15.0 Sequoia or newer",
+        "processorRequirements": "Universal 2 Binary (Apple Silicon arm64 M1/M2/M3/M4 & Intel x86_64)",
+        "license": "https://opensource.org/licenses/MIT",
+        "isAccessibleForFree": true,
+        "url": "https://amraudio.app/",
+        "downloadUrl": "https://github.com/1orgar/amr/releases/latest/download/AppleMusicRemoteMac-Universal.dmg",
+        "installUrl": "https://github.com/1orgar/amr/releases/latest",
+        "codeRepository": "https://github.com/1orgar/amr",
+        "screenshot": "https://amraudio.app/assets/og-cover.png",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        },
+        "featureList": [
+          "Automatic CoreAudio hardware DAC sample rate switching (44.1, 48, 88.2, 96, 176.4, 192 kHz)",
+          "100% digital volume lock (0.0 dBFS), Exclusive Hog Mode + Direct Non-Mixable Signed Integer (0x4c), and 3-stage click-free DAC Muting Guard",
+          "Real-time 4096-point vDSP Hann FFT Spectral Hi-Res Verifier & 24-bit LSB padded-bit detector",
+          "64-Bit Hybrid DSP Engine: DSD64/128/256/512 DoP (7th-order 7EC Viterbi Trellis M=16) & 705.6/768 kHz HQ PCM NOS with 15th-order Lipshitz LNS15 noise shaper (-165 dBFS)",
+          "Accelerate AMX FP64 (65,536-tap) and Metal GPU Overlap-Save df64 (262,144-tap Kaiser) oversamplers in Linear or Minimum Phase",
+          "64-Bit Mastering Pre-DSP: 256-sample C1 Cubic Hermite Loudness War De-Clipper and Weiss-Style Dynamic De-Esser",
+          "64-Bit Room Acoustic Auto-PEQ measured from listening position via iPhone or iPad microphone (Harman In-Room Target + iCloud sync)",
+          "ITU-R BS.1770 K-Weighted Late-Night Concert Dynamic Range Control with -63 dBFS Hermite tape-hiss gate",
+          "External Amplifier TCP Volume & Hardware iTunNORM SoundCheck + Crest Factor Compensation (Rotel, Denon, Marantz, Hegel, NAD, Lyngdorf)",
+          "Lossless 24-bit / 192 kHz LPCM WAV streaming to Bluesound / BluOS and UPnP/DLNA streamers plus Home Assistant TTS Audio Ducking",
+          "On-device Apple Neural Engine AI Prompt Curator, 512-D Geodesic SLERP Sonic Bridge, Infinite AI Wave, and Vision Saliency",
+          "Living Room 4K StandBy TV Mode with 60fps 32-band RTA, Digital PDFKit Album Booklets, and <2 ms 40 FPS 16-zone WLED DDP Ambilight"
+        ]
+      },
+      {
+        "@type": "HowTo",
+        "name": "How to Set Up Bit-Perfect Apple Music Remote on macOS",
+        "totalTime": "PT1M",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "position": 1,
+            "name": "Download & Install Universal DMG",
+            "text": "Download AppleMusicRemoteMac-Universal.dmg from GitHub Releases and drag Apple Music Remote.app into /Applications on macOS 14.0+."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 2,
+            "name": "Approve Music.app Automation",
+            "text": "Launch AMR from the macOS menu bar, grant Automation access to Music.app, and select your external USB/I2S/S/PDIF DAC or BluOS streamer."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 3,
+            "name": "Scan Menu Bar QR Code",
+            "text": "Scan the instant QR invite from your iPhone, iPad, Android phone, or 4K TV browser to pair with sub-15ms WebSocket transport and Lock Screen controls."
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Why do audiophiles need Apple Music Remote instead of AirPlay 2 or iOS iTunes Remote?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "macOS locks CoreAudio to a single fixed sample rate in Audio MIDI Setup, while AirPlay 2 from iOS/macOS frequently transcodes Apple Music streams to 256 kbps AAC or caps output at 44.1/48 kHz. Apple's legacy iTunes Remote app only browses local libraries and lacks Apple Music catalog search, personalized mixes, or DAC switching. AMR plays full Apple Music directly on your Mac wired to your DAC (up to 24-bit/192 kHz native or DSD512/768 kHz via Hybrid DSP) while turning any phone, tablet, or TV into a sub-15ms remote."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does AMR require virtual audio drivers like BlackHole or Loopback?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. AMR uses macOS Sonoma/Sequoia's native CoreAudio Process Tap API (AudioHardwareCreateProcessTap) backed by lock-free C11 SPSC atomic ring buffers. Zero third-party kernel extensions or virtual audio cables are installed."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does AMR detect fake upsampled Hi-Res tracks in Apple Music?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "SpectralIntegrityAnalyzer runs continuous 4096-point Hann-windowed vDSP FFT and bitwise LSB (bits 0..7) inspection directly on the PCM stream. It distinguishes authentic ultrasonic content above 22.05 kHz (TRUE HI-RES) from 44.1 kHz brickwall upsamples (FAKE HI-RES 22K CUT), 48 kHz upsamples (UPSAMPLED 48K), and 16-bit masters zero-padded into 24-bit containers (16-BIT PADDED)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can AMR output native DSD or 768 kHz NOS PCM for R2R ladder DACs?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. AMR's optional 64-bit Hybrid DSP engine runs 65,536-tap Accelerate AMX FP64 or 262,144-tap Metal GPU df64 Kaiser oversampling in Exclusive Hog + Signed Integer (0x4c) mode. It outputs DSD64/128/256/512 via DoP v1.1 (7th-order 7EC modulator with Viterbi Trellis M=16 and ISI regularization) or up to 705.6/768 kHz HQ PCM NOS with 15th-order Lipshitz LNS15 noise shaping (-165 dBFS audible noise floor, 27+ effective bits) ideal for Holo Audio, Denafrips, Chord, and Schiit multibit DACs."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does hardware track volume normalization work while keeping Mac output 100% Bit-Perfect?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "When 100% Volume Lock is active, ExternalAmpTCPController connects directly to Rotel (:9590), Denon/Marantz (:23), Hegel (:50001), NAD (:30000), or Lyngdorf (:84) amplifiers over TCP. AppleSoundCheckService reads studio iTunNORM tags (or measures live ITU-R BS.1770 LUFS), applies psychoacoustic Crest Factor Compensation for Loudness War remasters, and adjusts your amplifier's hardware attenuator while CoreAudio remains untouched at 0.0 dBFS."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does AMR stream lossless Hi-Res Apple Music to Bluesound NODE / BluOS and DLNA streamers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. AMR relays uncompressed 16/24-bit, 44.1–192 kHz LPCM WAV (/stream/live.wav) directly to Bluesound NODE, NODE NANO, POWERNODE, Eversolo, Wiim, and Volumio renderers with bidirectional transport sync and full support for 64-bit Room Auto-PEQ."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Dynamic Vision Saliency Ambient Backdrop -->
+  <div class="vision-ambient" aria-hidden="true">
+    <div class="vision-blob b1"></div>
+    <div class="vision-blob b2"></div>
+    <div class="vision-blob b3"></div>
+    <div class="vision-grid-overlay"></div>
+  </div>
+
+  <!-- Sticky Navigation Header -->
+  <header class="site-header">
+    <div class="nav-inner">
+      <a href="#top" class="brand-link" aria-label="Apple Music Remote Home">
+        <img src="./assets/icon-mac.svg" alt="AMR Icon" class="brand-icon" width="34" height="34">
+        <span class="brand-name">AMR <span class="brand-ver-chip">v3.0.0</span></span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary Sections">
+        <a href="#devices">Devices</a>
+        <a href="#lab">Signal Lab</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#features">Features</a>
+        <a href="#compare">Compare</a>
+        <a href="#download">Download &amp; QR</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="btn btn-ghost" data-open-qr-modal aria-label="Open Download QR Code">
+          <span>▣ QR</span>
+        </button>
+        <a href="https://github.com/1orgar/amr" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+          <span>GitHub</span>
+        </a>
+        <a href="https://github.com/1orgar/amr/releases/latest/download/AppleMusicRemoteMac-Universal.dmg" class="btn btn-primary btn-nav-download">
+          <span>↓ Download .dmg</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ======================================================================
+         1. HERO SECTION
+         ====================================================================== -->
+    <section class="hero-section" aria-labelledby="hero-heading">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow-pill">
+              <span class="eyebrow-dot"></span>
+              <span>100% Pure Swift macOS Server • CoreAudio HAL • MIT Open Source</span>
+            </div>
+
+            <h1 id="hero-heading" class="hero-title">
+              Apple Music, Unchained.<br>
+              <span class="hero-gradient-span">Bit-Perfect &amp; 64-Bit Hybrid DSP.</span>
+            </h1>
+
+            <p class="hero-lead">
+              Turn any Mac into a headless reference audiophile server controlled from your <strong>iPhone, iPad, Android, Desktop, or 4K OLED TV</strong>. Automatic <strong>44.1–192 kHz</strong> hardware DAC clock sync, real-time <strong>4096-pt FFT</strong> Fake Hi-Res verification, <strong>DSD512 DoP &amp; 768 kHz LNS15 R2R NOS</strong> modulation, iPhone-mic <strong>Room Auto-PEQ</strong>, external TCP amplifier SoundCheck, and on-device <strong>Apple Neural Engine</strong> curation.
+            </p>
+
+            <div class="hero-cta-row">
+              <a href="https://github.com/1orgar/amr/releases/latest/download/AppleMusicRemoteMac-Universal.dmg" class="btn btn-primary">
+                <span>↓ Download Universal DMG</span>
+                <span class="mono" style="font-size:11.5px;opacity:0.86;">macOS 14+</span>
+              </a>
+              <a href="https://github.com/1orgar/amr" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                <span>★ Source on GitHub (1orgar/amr)</span>
+              </a>
+              <button type="button" class="btn btn-secondary" data-open-qr-modal>
+                <span>▣ Scan QR to Download</span>
+              </button>
+            </div>
+
+            <div class="hero-meta-line">
+              <span>✓ Universal 2 (Apple Silicon M1–M4 &amp; Intel x86_64)</span>
+              <span>✓ Zero Virtual Audio Drivers</span>
+              <span>✓ 408 XCTest Unit Tests</span>
+            </div>
+          </div>
+
+          <!-- Right Quick QR & CLI Dock -->
+          <aside class="hero-qr-dock" aria-label="Quick Release QR and Terminal Clone">
+            <div class="hero-qr-top">
+              <span class="status-pill green">LATEST RELEASE • v3.0.0</span>
+              <span class="mono" style="font-size:11px;color:var(--text-muted);">FREE • MIT LICENSE</span>
+            </div>
+
+            <div class="hero-qr-body">
+              <a href="https://github.com/1orgar/amr/releases/latest" target="_blank" rel="noopener noreferrer" class="qr-frame-mini" title="Open Latest GitHub Release">
+                <img src="./assets/qr-download.svg" alt="QR code to download Apple Music Remote latest release" width="116" height="116">
+              </a>
+              <div class="hero-qr-copy">
+                <h2>Scan or Direct Install</h2>
+                <p>Browsing on iPhone or iPad? Scan to bookmark the Universal <code>.dmg</code> for your Mac Mini, Mac Studio, or MacBook.</p>
+                <div class="hero-qr-specs">
+                  <span class="status-pill neutral">arm64 + x86_64</span>
+                  <span class="status-pill cyan">Zero Electron</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-cmd-box">
+              <code id="hero-clone-cmd">git clone https://github.com/1orgar/amr.git &amp;&amp; ./build_universal_dmg.sh</code>
+              <button type="button" class="copy-chip-btn" data-copy-text="git clone https://github.com/1orgar/amr.git && cd amr && ./build_universal_dmg.sh">Copy</button>
+            </div>
+          </aside>
+        </div>
+
+        <!-- 8-Metric Engineering Telemetry Strip -->
+        <div class="telemetry-strip" aria-label="Core Performance Specifications">
+          <div class="telemetry-cell">
+            <div class="telemetry-val">44.1 – 192 kHz</div>
+            <div class="telemetry-label">Auto Native DAC Sync</div>
+            <div class="telemetry-sub">0.0 dBFS • 3-Stage Muting Guard</div>
+          </div>
+          <div class="telemetry-cell">
+            <div class="telemetry-val">DSD512 / 768k</div>
+            <div class="telemetry-label">64-Bit Hybrid DSP Engine</div>
+            <div class="telemetry-sub">7EC Trellis M=16 • Hog + Int 0x4c</div>
+          </div>
+          <div class="telemetry-cell">
+            <div class="telemetry-val">-168.4 dBFS</div>
+            <div class="telemetry-label">LNS15 Psychoacoustic NOS</div>
+            <div class="telemetry-sub">27.4 Effective Bits for R2R DACs</div>
+          </div>
+          <div class="telemetry-cell">
+            <div class="telemetry-val">4096-pt FFT</div>
+            <div class="telemetry-label">Live Fake Hi-Res Verifier</div>
+            <div class="telemetry-sub">Accelerate vDSP + 24-Bit LSB Check</div>
+          </div>
+          <div class="telemetry-cell">
+            <div class="telemetry-val">64-Bit PEQ</div>
+            <div class="telemetry-label">iPhone Mic Room Correction</div>
+            <div class="telemetry-sub">Harman Target • MEMS Calibrated</div>
+          </div>
+          <div class="telemetry-cell">
+            <div class="telemetry-val">512-D SLERP</div>
+            <div class="telemetry-label">Apple Neural Engine AI</div>
+            <div class="telemetry-sub">Sonic Bridge &amp; Infinite AI Wave</div>
+          </div>
+          <div class="telemetry-cell">
+            <div class="telemetry-val">24-Bit / 192k</div>
+            <div class="telemetry-label">BluOS &amp; DLNA WAV Relay</div>
+            <div class="telemetry-sub">NODE / Eversolo / Wiim + HA Duck</div>
+          </div>
+          <div class="telemetry-cell">
+            <div class="telemetry-val">40 FPS / &lt;2ms</div>
+            <div class="telemetry-label">16-Zone WLED Ambilight</div>
+            <div class="telemetry-sub">UDP :4048 DDP • Vision Saliency</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ======================================================================
+         2. INTERACTIVE MULTI-DEVICE SHOWCASE
+         ====================================================================== -->
+    <section id="devices" aria-labelledby="devices-heading">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow-pill">
+            <span class="eyebrow-dot"></span>
+            <span>Interactive Multi-Device Simulator</span>
+          </div>
+          <h2 id="devices-heading" class="section-title">Every Screen in Your Listening Room — Synchronized in &lt;15 ms.</h2>
+          <p class="section-desc">
+            Click any audiophile test track below to watch the entire AMR ecosystem react live: hardware DAC clock rate, <strong>vDSP</strong> Fake Hi-Res verdict, 60fps <strong>32-band TV RTA</strong> (notice the <code>22.05 kHz</code> cliff on upsampled remasters!), <strong>16-zone WLED DDP</strong> halo, <strong>Digital Album Booklet</strong>, and <strong>External TCP Amplifier</strong> gain.
+          </p>
+        </div>
+
+        <!-- Global Interactive Control Deck -->
+        <div class="device-control-deck">
+          <div class="deck-top-row">
+            <div class="deck-label">
+              <span class="live-pulse-dot"></span>
+              <span>Select Live Audiophile Scenario (Updates All Devices Simultaneously)</span>
+            </div>
+            <div class="device-view-tabs" role="tablist" aria-label="Device View Filter">
+              <button type="button" class="device-tab-btn active" data-device-focus="all">All Devices</button>
+              <button type="button" class="device-tab-btn" data-device-focus="iphone">iPhone 16 Pro</button>
+              <button type="button" class="device-tab-btn" data-device-focus="tv">4K TV + WLED</button>
+              <button type="button" class="device-tab-btn" data-device-focus="console">iPad / Desktop Console</button>
+              <button type="button" class="device-tab-btn" data-device-focus="macos">macOS AppKit Server</button>
+            </div>
+          </div>
+
+          <div id="demo-track-strip" class="demo-track-strip" aria-label="Demo Tracks"></div>
+        </div>
+
+        <!-- Multi-Device Stage -->
+        <div id="devices-stage-grid" class="devices-stage-grid">
+          <!-- LEFT: iPhone 16 Pro OLED PWA + Lock Screen / Dynamic Island -->
+          <div id="panel-device-iphone" class="device-panel-wrapper">
+            <div class="iphone-chassis" aria-label="Interactive iPhone 16 Pro AMR Remote">
+              <div class="iphone-screen">
+                <div>
+                  <div id="iphone-dynamic-island" class="dynamic-island expanded">
+                    <img id="di-mini-art" src="./assets/covers/giorgio-hires.svg" alt="" class="di-mini-art" width="16" height="16">
+                    <span class="mono" style="font-size:9px;color:#a1a1aa;">AMR LIVE</span>
+                    <span class="di-wave" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                  </div>
+
+                  <div class="amr-mobile-header">
+                    <div class="amr-brand-pill">AMR <span>v3.0</span></div>
+                    <div class="amr-header-badges">
+                      <span id="iphone-dr-badge" class="amr-dr-chip">DR14</span>
+                      <button type="button" id="iphone-dac-pill" class="amr-dac-pill" title="Tap to inspect Signal Path">88.2 kHz</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Submode 1: Pure OLED Now Playing -->
+                <div id="iphone-pane-player" class="iphone-subscreen">
+                  <div class="iphone-art-box">
+                    <img id="iphone-cover-img" src="./assets/covers/giorgio-hires.svg" alt="Current demo track artwork" width="256" height="256">
+                  </div>
+
+                  <div class="iphone-track-row">
+                    <div style="min-width:0;">
+                      <div id="iphone-track-title" class="iphone-track-title">Giorgio by Moroder</div>
+                      <div id="iphone-track-artist" class="iphone-track-artist">Analog Odyssey Ensemble</div>
+                    </div>
+                    <button type="button" id="iphone-btn-fav" class="iphone-fav-btn favorited" aria-label="Toggle Favorite">★</button>
+                  </div>
+
+                  <div class="amr-scrubber-wrap">
+                    <input type="range" id="iphone-scrubber" class="amr-scrubber-input" min="0" max="100" value="34" step="0.1" aria-label="Track Scrubber">
+                    <div class="amr-scrubber-times">
+                      <span id="iphone-time-elapsed">3:06</span>
+                      <span class="mono" style="color:var(--amr-green);">0.0 dBFS LOCK</span>
+                      <span id="iphone-time-rem">-5:58</span>
+                    </div>
+                  </div>
+
+                  <div class="amr-transport-row">
+                    <button type="button" id="iphone-btn-prev" class="amr-t-btn" aria-label="Previous Track">⏮</button>
+                    <button type="button" id="iphone-btn-play" class="amr-t-btn play-main" aria-label="Play or Pause">❚❚</button>
+                    <button type="button" id="iphone-btn-next" class="amr-t-btn" aria-label="Next Track">⏭</button>
+                  </div>
+
+                  <div class="iphone-amp-strip">
+                    <span>🔊 TCP AMP</span>
+                    <span id="iphone-amp-strip-text">Rotel :9590 • Vol 54%</span>
+                  </div>
+                </div>
+
+                <!-- Submode 2: Mobile Signal Path Sheet -->
+                <div id="iphone-pane-signal" class="iphone-subscreen" hidden>
+                  <div style="display:grid;gap:8px;margin-top:6px;">
+                    <div class="sp-node">
+                      <div class="sp-node-head">
+                        <span>SPECTRAL VERIFIER</span>
+                        <span id="ip-sp-verdict" class="status-pill green">TRUE HI-RES</span>
+                      </div>
+                      <div id="ip-sp-source" class="sp-node-title">ALAC Hi-Res (24/88.2)</div>
+                      <div id="ip-sp-cutoff" class="sp-node-sub mono">Cutoff: 41.8 kHz</div>
+                    </div>
+                    <div class="sp-node">
+                      <div class="sp-node-head">
+                        <span>COREAUDIO HAL</span>
+                        <span class="status-pill green">BIT-PERFECT</span>
+                      </div>
+                      <div id="ip-sp-dac" class="sp-node-sub mono">Locked: 88.2 kHz • 0.0 dBFS</div>
+                    </div>
+                    <div class="sp-node">
+                      <div class="sp-node-head">
+                        <span>EXTERNAL AMP TCP</span>
+                        <span class="status-pill cyan">SOUNDCHECK</span>
+                      </div>
+                      <div id="ip-sp-amp" class="sp-node-sub mono">Rotel TCP :9590 • -1.8 dB</div>
+                    </div>
+                  </div>
+                  <p style="font-size:11px;color:var(--text-muted);text-align:center;">Tap "Player" below to return to OLED Now Playing.</p>
+                </div>
+
+                <!-- Submode 3: Instant Camera QR Invite -->
+                <div id="iphone-pane-qr" class="iphone-subscreen" hidden>
+                  <div style="text-align:center;display:grid;gap:10px;justify-items:center;margin:auto 0;">
+                    <span class="status-pill cyan">CLIENT AUTH • QR INVITE</span>
+                    <div style="width:164px;height:164px;background:#fff;padding:8px;border-radius:16px;">
+                      <img src="./assets/qr-invite-demo.svg" alt="Demo LAN Invite QR Code" width="148" height="148">
+                    </div>
+                    <div style="font-size:13px;font-weight:700;">Share Guest Access (?invite=token)</div>
+                    <p style="font-size:11.5px;color:var(--text-secondary);line-height:1.45;">
+                      Point another phone or iPad camera here to pair &amp; authorize on LAN without opening macOS Settings.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Submode 4: iOS Lock Screen & Dynamic Island MediaSession -->
+                <div id="iphone-pane-lock" class="iphone-subscreen" hidden>
+                  <div class="ios-lockscreen-box">
+                    <div>
+                      <div class="ios-lock-date">Wednesday, November 25</div>
+                      <div class="ios-lock-clock">21:42</div>
+                    </div>
+
+                    <div class="ios-media-widget">
+                      <div style="display:flex;gap:10px;align-items:center;">
+                        <img id="ios-lock-art" src="./assets/covers/giorgio-hires.svg" alt="" style="width:44px;height:44px;border-radius:9px;" width="44" height="44">
+                        <div style="min-width:0;flex:1;">
+                          <div id="ios-lock-title" style="font-size:12.5px;font-weight:750;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Giorgio by Moroder</div>
+                          <div id="ios-lock-artist" style="font-size:11px;color:var(--text-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Analog Odyssey • 24/88.2</div>
+                        </div>
+                      </div>
+                      <div style="display:flex;justify-content:space-around;align-items:center;padding-top:2px;">
+                        <button type="button" id="ios-lock-prev" class="amr-t-btn" style="width:32px;height:32px;" aria-label="Previous">⏮</button>
+                        <button type="button" id="ios-lock-play" class="amr-t-btn" style="width:36px;height:36px;background:#fff;color:#000;" aria-label="Play/Pause">❚❚</button>
+                        <button type="button" id="ios-lock-next" class="amr-t-btn" style="width:32px;height:32px;" aria-label="Next">⏭</button>
+                      </div>
+                      <div class="mono" style="font-size:9.5px;color:var(--amr-cyan);text-align:center;">
+                        Per-Device MediaSession Lock Screen Active
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bottom iPhone Submode Bar -->
+                <div class="iphone-mode-bar" role="tablist" aria-label="iPhone Screen Mode">
+                  <button type="button" class="iphone-mode-btn active" data-iphone-mode="player">Player</button>
+                  <button type="button" class="iphone-mode-btn" data-iphone-mode="signal">Signal</button>
+                  <button type="button" class="iphone-mode-btn" data-iphone-mode="qr">QR Invite</button>
+                  <button type="button" class="iphone-mode-btn" data-iphone-mode="lock">Lock UI</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT STACK: 4K OLED TV + iPad/Desktop Console + macOS AppKit -->
+          <div class="devices-stage-right-stack">
+            <!-- 2. 65" 4K Living Room TV + 16-Zone WLED DDP Ambilight -->
+            <div id="panel-device-tv" class="device-panel-wrapper" style="width:100%;">
+              <div class="tv-ambilight-stage">
+                <div id="tv-wled-halo" class="tv-wled-halo" aria-hidden="true"></div>
+                <div class="tv-chassis" aria-label="Living Room 4K TV StandBy Mode with WLED Ambilight">
+                  <div id="tv-screen-surface" class="tv-screen">
+                    <div class="tv-top-bar">
+                      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                        <span class="amr-brand-pill">📺 StandBy 4K TV</span>
+                        <span id="tv-verdict-pill" class="status-pill green">TRUE HI-RES • 88.2 kHz</span>
+                      </div>
+
+                      <div class="tv-mode-pills">
+                        <button type="button" class="tv-pill-btn active" data-tv-view="rta">📊 32-Band RTA</button>
+                        <button type="button" class="tv-pill-btn" data-tv-view="aicloud">✨ AI Tag Cloud</button>
+                        <button type="button" class="tv-pill-btn" data-tv-view="library">▦ TV Library</button>
+                        <select id="tv-wled-select" class="tv-pill-btn" aria-label="WLED DDP Ambilight Mode" style="background:#14141c;color:#fff;">
+                          <option value="spectral">WLED: 3-Band Spectral EQ (40fps)</option>
+                          <option value="pulse">WLED: Center VU Pulse (&lt;2ms)</option>
+                          <option value="palette">WLED: Vision Cover Palette (γ=2.4)</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <!-- TV View 1: Artwork + Live 60fps 32-Band Logarithmic RTA -->
+                    <div id="tv-view-rta">
+                      <div class="tv-main-grid">
+                        <img id="tv-cover-img" src="./assets/covers/giorgio-hires.svg" alt="TV Now Playing Artwork" class="tv-cover-art" width="168" height="168">
+                        <div class="tv-now-meta" style="min-width:0;">
+                          <h3 id="tv-track-title">Giorgio by Moroder (Studio Master)</h3>
+                          <p id="tv-track-sub">Analog Odyssey Ensemble  •  Random Access Sessions</p>
+
+                          <div class="tv-rta-box">
+                            <div class="tv-rta-head">
+                              <span>LIVE 60 FPS LOGARITHMIC RTA (20 Hz – 96 kHz)</span>
+                              <span style="color:var(--amr-amber);">┆ 22.05 kHz CD NYQUIST</span>
+                              <span style="color:var(--amr-cyan);">ULTRASONIC HI-RES &gt;22k</span>
+                            </div>
+                            <canvas id="tv-rta-canvas" class="tv-rta-canvas" width="520" height="78" aria-label="Real-time 32-band audio spectrum analyzer"></canvas>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- TV View 2: Fullscreen Monochrome Neural AI Tag Cloud -->
+                    <div id="tv-view-aicloud" hidden>
+                      <div class="mono" style="font-size:11px;color:var(--amr-cyan);margin-bottom:4px;">
+                        APPLE NEURAL ENGINE • CLICK ANY VIBE TO CURATE 20+ TRACK SEMANTIC FLOW
+                      </div>
+                      <div class="tv-ai-cloud-grid">
+                        <button type="button" class="tv-ai-tag">🎷 Midnight Tenor Sax Noir</button>
+                        <button type="button" class="tv-ai-tag">🌌 1970s Berlin Modular Sequencers</button>
+                        <button type="button" class="tv-ai-tag">🎻 Nordic Chamber Strings (DR16+)</button>
+                        <button type="button" class="tv-ai-tag">🥁 Odd-Meter Audiophile Drum Transients</button>
+                        <button type="button" class="tv-ai-tag">🥃 Warm Tube Blues &amp; Hammond B3</button>
+                        <button type="button" class="tv-ai-tag">🔊 Bristol Sub-Bass Trip-Hop</button>
+                        <button type="button" class="tv-ai-tag">🪩 1980s Tokyo City Pop Slap Bass</button>
+                        <button type="button" class="tv-ai-tag">🕯️ Rainy Metropolis Baritone Jazz</button>
+                      </div>
+                    </div>
+
+                    <!-- TV View 3: Fullscreen 1:1 Personal Stations & Library Grid -->
+                    <div id="tv-view-library" hidden>
+                      <div class="tv-library-tiles">
+                        <div class="tv-lib-tile" style="background:linear-gradient(135deg,#fa233b33,#7928ca33);">
+                          <span class="mono" style="font-size:10px;color:#ff6b81;">APPLE MUSIC MIX</span>
+                          <span>My Station (Live)</span>
+                        </div>
+                        <div class="tv-lib-tile" style="background:linear-gradient(135deg,#00d2ff33,#3a86ff33);">
+                          <span class="mono" style="font-size:10px;color:#70d7ff;">PERSONALIZED</span>
+                          <span>Discovery Station</span>
+                        </div>
+                        <div class="tv-lib-tile" style="background:linear-gradient(135deg,#30d15833,#00c7be33);">
+                          <span class="mono" style="font-size:10px;color:#30d158;">REFERENCE 24/192</span>
+                          <span>R2R &amp; SACD Masters</span>
+                        </div>
+                        <div class="tv-lib-tile" style="background:linear-gradient(135deg,#bf5af233,#5e5ce633);">
+                          <span class="mono" style="font-size:10px;color:#d98ff8;">★ PINNED AI WAVE</span>
+                          <span>Late-Night Concert</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div style="display:flex;justify-content:space-between;align-items:center;font-family:var(--font-mono);font-size:10.5px;color:var(--text-muted);">
+                      <span>HLS Motion Covers • iPad/TV NoSleep Keep-Alive</span>
+                      <span>WLED DDP UDP :4048 • 16 Bilinear Zones</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. iPad Pro / Desktop Split-Screen Studio Console -->
+            <div id="panel-device-console" class="device-panel-wrapper" style="width:100%;">
+              <div class="studio-console-chassis" aria-label="iPad Pro and Desktop Studio Console">
+                <div class="console-topbar">
+                  <div style="display:flex;align-items:center;gap:10px;">
+                    <span class="win-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                    <span class="mono" style="font-size:11.5px;font-weight:700;color:#d4d4dc;">iPad Pro / Desktop Split-View Console</span>
+                  </div>
+                  <div class="console-pane-tabs" role="tablist">
+                    <button type="button" class="console-tab-btn active" data-console-tab="signal">🎛️ Signal Path &amp; DSP</button>
+                    <button type="button" class="console-tab-btn" data-console-tab="booklet">📖 Digital Booklet (PDFKit)</button>
+                    <button type="button" class="console-tab-btn" data-console-tab="bridge">🌉 512-D Sonic Bridge</button>
+                  </div>
+                </div>
+
+                <div class="console-body">
+                  <!-- Tab 1: Roon-Style Signal Path Inspector -->
+                  <div id="console-pane-signal">
+                    <div class="sp-grid">
+                      <div class="sp-node">
+                        <div class="sp-node-head">
+                          <span>1 • SOURCE &amp; vDSP FFT</span>
+                          <span id="console-sp-verdict" class="status-pill green">TRUE HI-RES</span>
+                        </div>
+                        <div id="console-sp-source" class="sp-node-title">ALAC Hi-Res • DR14 • 24/24 Bits</div>
+                        <label class="sp-node-sub" for="console-dsp-select">Hybrid 64-Bit DSP Preset:</label>
+                        <select id="console-dsp-select" class="sp-select">
+                          <option value="builtin_passthrough">Bit-Perfect Passthrough (1:1 Native PCM)</option>
+                          <option value="builtin_dsd256_sacd">SACD Reference (DSD256 • 7EC-Balanced • AMX)</option>
+                          <option value="builtin_dsd256_super_metal">Max Soundstage (DSD256 • 7EC-Super • Metal 262k)</option>
+                          <option value="builtin_dsd128_transient">Attack &amp; Slam (DSD128 • 7EC-Transient • Min-Phase)</option>
+                          <option value="builtin_dsd64_spdif">Optical / Coax S/PDIF DDC (DSD64 DoP 176.4k)</option>
+                          <option value="builtin_hq_nos_r2r">Multibit / R2R Ladder (HQ PCM NOS 768k • LNS15)</option>
+                        </select>
+                      </div>
+
+                      <div class="sp-node">
+                        <div class="sp-node-head">
+                          <span>2 • 64-BIT PRE-DSP &amp; AMP TCP</span>
+                          <span class="status-pill cyan">FLOAT64</span>
+                        </div>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+                          <div>
+                            <label class="sp-node-sub" for="console-declip-select">⚡ De-Clipper:</label>
+                            <select id="console-declip-select" class="sp-select">
+                              <option value="off">Off (Bit-Perfect)</option>
+                              <option value="auto">Auto Smart (DR≤10)</option>
+                              <option value="gentle">Gentle (+2.8 dB)</option>
+                              <option value="studio">Studio C1 (+4.2 dB)</option>
+                            </select>
+                          </div>
+                          <div>
+                            <label class="sp-node-sub" for="console-deesser-select">💎 Weiss De-Esser:</label>
+                            <select id="console-deesser-select" class="sp-select">
+                              <option value="off">Off (Bit-Perfect)</option>
+                              <option value="gentle">Gentle (-3.5 dB)</option>
+                              <option value="vocal">Weiss Studio (-6 dB)</option>
+                            </select>
+                          </div>
+                        </div>
+                        <label class="sp-node-sub" for="console-drc-select">🌙 Late-Night K-Weighted DRC:</label>
+                        <select id="console-drc-select" class="sp-select">
+                          <option value="off">Off (100% Bit-Perfect)</option>
+                          <option value="gentle">Gentle — Jazz / Vocal (+6.0 dB)</option>
+                          <option value="concert">Night Concert — Symphony / OST (+9.5 dB)</option>
+                        </select>
+                        <div id="console-sp-amp" class="sp-node-sub mono" style="margin-top:2px;color:var(--amr-green);">
+                          Rotel TCP :9590 • Vol 54% • iTunNORM -1.8 dB
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Tab 2: Multi-Page Digital Album Booklet -->
+                  <div id="console-pane-booklet" hidden>
+                    <div class="booklet-reader">
+                      <div class="booklet-nav">
+                        <span id="booklet-page-indicator" class="mono" style="font-size:11.5px;color:var(--text-secondary);">Page 1 of 3 • PDFKit + Editorial</span>
+                        <div style="display:flex;gap:6px;">
+                          <button type="button" id="booklet-prev-btn" class="btn-ghost" style="height:30px;padding:0 11px;">← Prev Page</button>
+                          <button type="button" id="booklet-next-btn" class="btn-ghost" style="height:30px;padding:0 11px;">Next Page →</button>
+                        </div>
+                      </div>
+                      <div id="booklet-dynamic-body" class="booklet-page-content"></div>
+                    </div>
+                  </div>
+
+                  <!-- Tab 3: 512-D Geodesic SLERP Sonic Bridge -->
+                  <div id="console-pane-bridge" hidden>
+                    <div class="sonic-bridge-demo">
+                      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+                        <span class="status-pill cyan">🌉 SONIC BRIDGE • 512-D NLEMBEDDING SLERP GEODESIC</span>
+                        <span class="mono" style="font-size:11px;color:var(--text-muted);">Apple Neural Engine • Zero Cloud</span>
+                      </div>
+                      <div id="sb-preset-chips" class="sb-preset-row"></div>
+                      <div id="sb-steps-grid" class="sb-steps-list"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. Native macOS AppKit Settings Window -->
+            <div id="panel-device-macos" class="device-panel-wrapper" style="width:100%;">
+              <div class="macos-window" aria-label="Native macOS AppKit Settings Window">
+                <div class="macos-toolbar">
+                  <div style="display:flex;align-items:center;gap:10px;">
+                    <span class="win-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                    <span style="font-size:12.5px;font-weight:720;">Apple Music Remote — Native AppKit Settings</span>
+                  </div>
+                  <div class="macos-tabs" role="tablist">
+                    <button type="button" class="macos-tab active" data-mac-tab="general">⚙ General &amp; Auth</button>
+                    <button type="button" class="macos-tab" data-mac-tab="dsp">〰 Hybrid DSP</button>
+                    <button type="button" class="macos-tab" data-mac-tab="amp">🎛 Amplifier TCP</button>
+                    <button type="button" class="macos-tab" data-mac-tab="menubar">🎵 Menu Bar</button>
+                  </div>
+                </div>
+                <div id="macos-settings-body" class="macos-content"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ======================================================================
+         3. INTERACTIVE SIGNAL & ACOUSTIC ENGINEERING LABORATORY (GRAPHS)
+         ====================================================================== -->
+    <section id="lab" aria-labelledby="lab-heading">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow-pill">
+            <span class="eyebrow-dot"></span>
+            <span>Interactive Acoustic &amp; DSP Graphs</span>
+          </div>
+          <h2 id="lab-heading" class="section-title">No Audiophile Snake Oil. Pure 64-Bit Verification &amp; Math.</h2>
+          <p class="section-desc">
+            Inspect how AMR exposes fake upsampled Hi-Res masters via <code>vDSP</code> FFT &amp; 24-bit LSB scanning, calibrates room standing waves from your iPhone microphone, excavates audible quantization noise below <code>-168 dBFS</code>, and reconstructs clipped transients.
+          </p>
+        </div>
+
+        <div class="lab-grid">
+          <!-- Graph 1: 4096-pt FFT Spectral Hi-Res Verifier + 24-Bit LSB Matrix -->
+          <article class="lab-card">
+            <div class="lab-card-head">
+              <div>
+                <h3 class="lab-card-title">1. Real-Time 4096-pt FFT Fake Hi-Res Detector</h3>
+                <p class="lab-card-sub">Continuous Hann-windowed <code>vDSP_fft_zrip</code> + bitwise 24-bit LSB scanner.</p>
+              </div>
+              <span id="lab-spectral-badge" class="status-pill green">TRUE HI-RES</span>
+            </div>
+
+            <div class="lab-segmented" role="tablist" aria-label="Spectral Verdict Scenarios">
+              <button type="button" class="lab-seg-btn active" data-spec-mode="true_hires">True Hi-Res</button>
+              <button type="button" class="lab-seg-btn" data-spec-mode="fake_22k">Fake 22.05k Cut</button>
+              <button type="button" class="lab-seg-btn" data-spec-mode="upsampled_48k">Upsampled 48k</button>
+              <button type="button" class="lab-seg-btn" data-spec-mode="padded_16bit">16-Bit Padded</button>
+              <button type="button" class="lab-seg-btn" data-spec-mode="cd_lossless">CD 16/44.1</button>
+            </div>
+
+            <div class="chart-frame">
+              <svg id="lab-spectral-svg" class="chart-svg" viewBox="0 0 520 188" preserveAspectRatio="none" role="img" aria-label="FFT Frequency Spectrum 20 Hz to 96 kHz"></svg>
+              <div class="chart-axis-row">
+                <span>20 Hz</span>
+                <span>1 kHz</span>
+                <span>10 kHz</span>
+                <span style="color:var(--amr-amber);">22.05 kHz</span>
+                <span>48 kHz</span>
+                <span>96 kHz</span>
+              </div>
+            </div>
+
+            <div class="lsb-strip-wrap">
+              <div class="lsb-strip-label">
+                <span>24-BIT PCM WORD BIT-ACTIVITY (MSB 1 → LSB 24)</span>
+                <span id="lab-lsb-summary" style="color:var(--amr-green);">Bits 1–24 Active</span>
+              </div>
+              <div id="lab-lsb-grid" class="lsb-bits-grid"></div>
+            </div>
+
+            <div class="lab-metrics-row">
+              <div class="lab-metric-box">
+                <div class="lab-metric-k">Stream Container</div>
+                <div id="lab-spec-container" class="lab-metric-v">24-bit / 192.0 kHz</div>
+              </div>
+              <div class="lab-metric-box">
+                <div class="lab-metric-k">HF Roll-Off</div>
+                <div id="lab-spec-cutoff" class="lab-metric-v">68.4 kHz</div>
+              </div>
+              <div class="lab-metric-box">
+                <div class="lab-metric-k">Ultrasonic (&gt;22k)</div>
+                <div id="lab-spec-ultra" class="lab-metric-v">-38.6 dBFS</div>
+              </div>
+            </div>
+            <p id="lab-spec-note" style="font-size:12.5px;color:var(--text-secondary);"></p>
+          </article>
+
+          <!-- Graph 2: 64-Bit Room Acoustic Auto-PEQ (iPhone MEMS Mic -> Harman Target) -->
+          <article class="lab-card">
+            <div class="lab-card-head">
+              <div>
+                <h3 class="lab-card-title">2. iPhone Mic 64-Bit Room Auto-PEQ</h3>
+                <p class="lab-card-sub">31-band Welch-Hann FFT, iOS MEMS mic calibration &amp; asymmetric RBJ biquads.</p>
+              </div>
+              <span id="lab-room-preamp" class="status-pill cyan">-3.6 dB FP64 Preamp</span>
+            </div>
+
+            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:center;">
+              <div class="lab-segmented" role="tablist" aria-label="Room Acoustic Profiles">
+                <button type="button" class="lab-seg-btn active" data-room-mode="living_room">Living Room 48 Hz</button>
+                <button type="button" class="lab-seg-btn" data-room-mode="desk_studio">Desk Bounce 135 Hz</button>
+                <button type="button" class="lab-seg-btn" data-room-mode="open_loft">Glass Loft</button>
+              </div>
+              <button type="button" id="btn-simulate-sweep" class="btn-ghost" style="height:30px;font-size:11.5px;border-color:var(--amr-crimson-border);color:#fff;">
+                🎤 Run Pink Noise Sweep
+              </button>
+            </div>
+
+            <div class="chart-frame">
+              <svg id="lab-room-svg" class="chart-svg" viewBox="0 0 520 188" preserveAspectRatio="none" role="img" aria-label="Room Frequency Response Curve 20 Hz to 20 kHz"></svg>
+              <div class="chart-axis-row">
+                <span>20 Hz</span>
+                <span>63 Hz</span>
+                <span>200 Hz</span>
+                <span>1 kHz</span>
+                <span>5 kHz</span>
+                <span>20 kHz</span>
+              </div>
+            </div>
+
+            <div class="chart-legend">
+              <span class="legend-item"><i class="legend-swatch" style="background:#ff9f0a;"></i>Measured iPhone MEMS Mic</span>
+              <span class="legend-item"><i class="legend-swatch" style="background:rgba(255,255,255,0.6);"></i>Harman In-Room Target (+2.2 dB Bass / -0.85 dB/oct HF)</span>
+              <span class="legend-item"><i class="legend-swatch" style="background:#30d158;"></i>64-Bit Auto-PEQ Output</span>
+            </div>
+
+            <div id="lab-room-pills" class="peq-pills-wrap"></div>
+            <p style="font-size:12.5px;color:var(--text-secondary);">
+              Cuts resonant standing modes up to <code>-9.0 dB</code> (narrow <code>Q 2.0–3.6</code>) while capping acoustic phase-null boosts at <code>+3.5 dB</code> (wide <code>Q 1.1–1.6</code>) across USB DACs and BluOS/DLNA streamers.
+            </p>
+          </article>
+
+          <!-- Graph 3: LNS15 Psychoacoustic Noise Shaper vs DSD256 7EC-Super -->
+          <article class="lab-card">
+            <div class="lab-card-head">
+              <div>
+                <h3 class="lab-card-title">3. LNS15 768 kHz NOS &amp; DSD256 Noise Shaping</h3>
+                <p class="lab-card-sub">15th-order Lipshitz psychoacoustic shaper &amp; 7th-order <code>7EC</code> Viterbi Trellis.</p>
+              </div>
+              <span id="lab-noise-badge" class="status-pill cyan">27.4 EFFECTIVE BITS</span>
+            </div>
+
+            <div class="lab-segmented" role="tablist" aria-label="Noise Shaper Profiles">
+              <button type="button" class="lab-seg-btn active" data-noise-mode="lns15">768k NOS • LNS15</button>
+              <button type="button" class="lab-seg-btn" data-noise-mode="dsd256">DSD256 • 7EC-Super</button>
+              <button type="button" class="lab-seg-btn" data-noise-mode="tpdf24">24-Bit TPDF</button>
+              <button type="button" class="lab-seg-btn" data-noise-mode="pcm16">16-Bit CD Ref</button>
+            </div>
+
+            <div class="chart-frame">
+              <svg id="lab-noise-svg" class="chart-svg" viewBox="0 0 520 188" preserveAspectRatio="none" role="img" aria-label="Quantization Noise Floor 20 Hz to 200 kHz"></svg>
+              <div class="chart-axis-row">
+                <span>20 Hz</span>
+                <span>500 Hz</span>
+                <span style="color:var(--amr-green);">3.5 kHz (Ear Peak)</span>
+                <span>20 kHz</span>
+                <span>80 kHz</span>
+                <span>200 kHz</span>
+              </div>
+            </div>
+
+            <div class="lab-metrics-row">
+              <div class="lab-metric-box">
+                <div class="lab-metric-k">1–6 kHz Floor</div>
+                <div id="lab-noise-floor" class="lab-metric-v">-168.4 dBFS</div>
+              </div>
+              <div class="lab-metric-box">
+                <div class="lab-metric-k">DAC Carrier</div>
+                <div id="lab-noise-carrier" class="lab-metric-v">705.6 / 768 kHz</div>
+              </div>
+              <div class="lab-metric-box">
+                <div class="lab-metric-k">Topology</div>
+                <div id="lab-noise-shaper" class="lab-metric-v">LNS15 15th-Order</div>
+              </div>
+            </div>
+            <p id="lab-noise-desc" style="font-size:12.5px;color:var(--text-secondary);"></p>
+          </article>
+
+          <!-- Graph 4: 64-Bit Mastering De-Clipper Oscilloscope & Crest Compensation -->
+          <article class="lab-card">
+            <div class="lab-card-head">
+              <div>
+                <h3 class="lab-card-title">4. Loudness War C1 Hermite De-Clipper &amp; Crest</h3>
+                <p class="lab-card-sub">256-sample look-ahead plateau detector + <code>C1</code> slope-continuous peak reconstruction.</p>
+              </div>
+              <span id="lab-declip-badge" class="status-pill green">STUDIO C1 HERMITE • +4.2 dB</span>
+            </div>
+
+            <div class="lab-segmented" role="tablist" aria-label="De-Clipper Modes">
+              <button type="button" class="lab-seg-btn" data-declip-mode="off">Off (Shaved 0 dBFS)</button>
+              <button type="button" class="lab-seg-btn" data-declip-mode="gentle">Gentle (+2.8 dB)</button>
+              <button type="button" class="lab-seg-btn active" data-declip-mode="studio">Studio Restoration (+4.2 dB)</button>
+            </div>
+
+            <div class="chart-frame">
+              <svg id="lab-declip-svg" class="chart-svg" viewBox="0 0 520 188" preserveAspectRatio="none" role="img" aria-label="Waveform Transient Peak Reconstruction Oscilloscope"></svg>
+              <div class="chart-axis-row">
+                <span>Sample n-128</span>
+                <span>Left Slope d/dt</span>
+                <span style="color:var(--amr-green);">Reconstructed Transient Dome</span>
+                <span>Right Slope d/dt</span>
+                <span>Sample n+128</span>
+              </div>
+            </div>
+
+            <div class="lab-metrics-row">
+              <div class="lab-metric-box">
+                <div class="lab-metric-k">Restored Crest</div>
+                <div id="lab-declip-gain" class="lab-metric-v">+4.2 dB Peak</div>
+              </div>
+              <div class="lab-metric-box">
+                <div class="lab-metric-k">Unclipped Samples</div>
+                <div class="lab-metric-v">100% Bit-Identical</div>
+              </div>
+              <div class="lab-metric-box">
+                <div class="lab-metric-k">DR11+ Smart Guard</div>
+                <div class="lab-metric-v">Auto-Bypass</div>
+              </div>
+            </div>
+            <p style="font-size:12.5px;color:var(--text-secondary);">
+              Paired with <strong>Weiss-Style Dynamic De-Esser</strong> (level-independent <code>6.5–7.0 kHz</code> sibilance-to-body ratio) and <strong>Crest Factor Compensation</strong> so normalized <code>DR5</code> remasters never sound weak next to <code>DR14</code> audiophile recordings.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ======================================================================
+         4. INTERACTIVE SYSTEM & SIGNAL PIPELINE ARCHITECTURE DIAGRAM
+         ====================================================================== -->
+    <section id="architecture" aria-labelledby="arch-heading">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow-pill">
+            <span class="eyebrow-dot"></span>
+            <span>Interactive System &amp; Audio Pipeline Schema</span>
+          </div>
+          <h2 id="arch-heading" class="section-title">198 Pure Swift Files. Zero Electron. Lock-Free Real-Time Audio.</h2>
+          <p class="section-desc">
+            Click any subsystem node in the 4-stage schematic below to inspect its Apple framework stack, real-time thread model, network protocol, and latency budget.
+          </p>
+        </div>
+
+        <div class="arch-shell">
+          <div class="arch-lanes" role="group" aria-label="AMR 4-Stage System Architecture">
+            <!-- Lane 1: Remote, Neural AI & Smart Home Inputs -->
+            <div class="arch-lane">
+              <div class="arch-lane-title">Stage 1 • Control &amp; Neural AI</div>
+              <button type="button" class="arch-node-btn" data-arch-node="pwa">
+                <span class="arch-node-tag">WS / HTTP :8080</span>
+                <span class="arch-node-name">OLED PWA &amp; Device Auth</span>
+                <span class="arch-node-desc">iPhone, iPad, Android, 4K TV, Dynamic Island &amp; QR Invites</span>
+              </button>
+              <button type="button" class="arch-node-btn" data-arch-node="ane">
+                <span class="arch-node-tag">APPLE NEURAL ENGINE</span>
+                <span class="arch-node-name">AI Curator &amp; Sonic Bridge</span>
+                <span class="arch-node-desc">512-D NLEmbedding SLERP, Infinite Wave &amp; Vision Saliency</span>
+              </button>
+              <button type="button" class="arch-node-btn" data-arch-node="upnp_in">
+                <span class="arch-node-tag">SSDP / SOAP :8090</span>
+                <span class="arch-node-name">UPnP &amp; Home Assistant</span>
+                <span class="arch-node-desc">AVTransport MediaRenderer + /api/duck TTS Attenuation</span>
+              </button>
+            </div>
+
+            <!-- Lane 2: macOS Bridge & Lock-Free CoreAudio Tap -->
+            <div class="arch-lane">
+              <div class="arch-lane-title">Stage 2 • Tap &amp; FFT Verification</div>
+              <button type="button" class="arch-node-btn" data-arch-node="bridge">
+                <span class="arch-node-tag">SCRIPTING + MUSICKIT</span>
+                <span class="arch-node-name">MusicBridge &amp; Booklets</span>
+                <span class="arch-node-desc">iTunesLibrary, Keychain ES256 JWT, Watchdog &amp; PDFKit</span>
+              </button>
+              <button type="button" class="arch-node-btn active" data-arch-node="tap">
+                <span class="arch-node-tag">COREAUDIO PROCESS TAP</span>
+                <span class="arch-node-name">AudioProcessTapService</span>
+                <span class="arch-node-desc">C11 SPSC Atomic Ring • Zero RT Heap Allocations</span>
+              </button>
+              <button type="button" class="arch-node-btn" data-arch-node="spectral">
+                <span class="arch-node-tag">ACCELERATE vDSP</span>
+                <span class="arch-node-name">SpectralIntegrityAnalyzer</span>
+                <span class="arch-node-desc">4096-pt Hann FFT • 24-Bit LSB Check • 60fps 32-Band RTA</span>
+              </button>
+            </div>
+
+            <!-- Lane 3: 64-Bit Pre-DSP & Hybrid Modulator -->
+            <div class="arch-lane">
+              <div class="arch-lane-title">Stage 3 • 64-Bit Hybrid DSP</div>
+              <button type="button" class="arch-node-btn" data-arch-node="predsp">
+                <span class="arch-node-tag">FLOAT64 PRE-DSP</span>
+                <span class="arch-node-name">Mastering, Auto-PEQ &amp; DRC</span>
+                <span class="arch-node-desc">C1 De-Clipper → Weiss De-Esser → Harman PEQ → K-DRC</span>
+              </button>
+              <button type="button" class="arch-node-btn" data-arch-node="hybrid_dsp">
+                <span class="arch-node-tag">AMX FP64 + METAL GPU</span>
+                <span class="arch-node-name">7EC DSD512 &amp; LNS15 NOS</span>
+                <span class="arch-node-desc">65k / 262k Kaiser FIR • Trellis M=16 • 768 kHz R2R NOS</span>
+              </button>
+            </div>
+
+            <!-- Lane 4: Bit-Perfect Hardware & Multi-Room Outputs -->
+            <div class="arch-lane">
+              <div class="arch-lane-title">Stage 4 • Hardware &amp; Streamers</div>
+              <button type="button" class="arch-node-btn" data-arch-node="hal_dac">
+                <span class="arch-node-tag">HOG + INTEGER 0x4c</span>
+                <span class="arch-node-name">External USB / I2S DAC</span>
+                <span class="arch-node-desc">Auto 44.1k–1.536M Sync • 3-Stage Click-Free Muting Guard</span>
+              </button>
+              <button type="button" class="arch-node-btn" data-arch-node="amp_tcp">
+                <span class="arch-node-tag">PERSISTENT TCP</span>
+                <span class="arch-node-name">Amplifier SoundCheck</span>
+                <span class="arch-node-desc">Rotel, Hegel, Denon, NAD, Lyngdorf + iTunNORM &amp; Crest</span>
+              </button>
+              <button type="button" class="arch-node-btn" data-arch-node="bluos">
+                <span class="arch-node-tag">24-BIT / 192 KHZ WAV</span>
+                <span class="arch-node-name">BluOS &amp; DLNA Streamers</span>
+                <span class="arch-node-desc">Bluesound NODE, Eversolo, Wiim + Bidirectional Sync</span>
+              </button>
+              <button type="button" class="arch-node-btn" data-arch-node="wled">
+                <span class="arch-node-tag">UDP :4048 DDP</span>
+                <span class="arch-node-name">16-Zone WLED Ambilight</span>
+                <span class="arch-node-desc">40 FPS • &lt;2 ms Latency • 5 Audio-Reactive Modes</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Selected Node Engineering Inspector -->
+          <div class="arch-inspector" aria-live="polite">
+            <div>
+              <span class="status-pill crimson">SELECTED SUBSYSTEM TELEMETRY</span>
+              <h3 id="arch-insp-title" style="margin-top:8px;font-size:20px;font-weight:780;">AudioProcessTapService &amp; C11 Lock-Free SPSC Ring</h3>
+              <p id="arch-insp-summary" style="margin-top:6px;font-size:14px;color:var(--text-secondary);line-height:1.6;"></p>
+            </div>
+            <div class="arch-insp-specs">
+              <div class="arch-spec-pill">
+                <span>APPLE FRAMEWORKS</span>
+                <strong id="arch-spec-fw">CoreAudio Process Tap</strong>
+              </div>
+              <div class="arch-spec-pill">
+                <span>THREADING MODEL</span>
+                <strong id="arch-spec-thread">RT IOProc + C11 Atomics</strong>
+              </div>
+              <div class="arch-spec-pill">
+                <span>PRECISION / LATENCY</span>
+                <strong id="arch-spec-lat">Zero-Copy Planar Float32</strong>
+              </div>
+              <div class="arch-spec-pill">
+                <span>INTERFACE / PORT</span>
+                <strong id="arch-spec-proto">44.1 – 192 kHz PCM</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Open WebSocket & REST API Playground -->
+          <div class="api-playground">
+            <div>
+              <span class="status-pill neutral">OPEN AUTOMATION PROTOCOL</span>
+              <h3 style="margin-top:8px;font-size:18px;font-weight:760;">First-Class WebSocket, REST &amp; Home Assistant API</h3>
+              <p style="margin-top:6px;font-size:13.5px;color:var(--text-secondary);line-height:1.58;">
+                Integrate AMR into Home Assistant, Raycast, Shortcuts, or custom hardware knobs via clean JSON over <code>ws://&lt;mac-ip&gt;:8080</code> and HTTP REST endpoints.
+              </p>
+              <div class="lab-segmented" style="margin-top:12px;">
+                <button type="button" class="lab-seg-btn active" data-api-tab="status">GET /api/status</button>
+                <button type="button" class="lab-seg-btn" data-api-tab="ws_bridge">WS Sonic Bridge</button>
+                <button type="button" class="lab-seg-btn" data-api-tab="ws_dsp">WS Hybrid DSP</button>
+                <button type="button" class="lab-seg-btn" data-api-tab="ha_duck">POST /api/duck (HA)</button>
+              </div>
+            </div>
+            <pre id="api-code-output" class="api-code-pre"></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ======================================================================
+         5. 12 KILLER FEATURES BENTO MATRIX
+         ====================================================================== -->
+    <section id="features" aria-labelledby="features-heading">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow-pill">
+            <span class="eyebrow-dot"></span>
+            <span>12 Audiophile &amp; Ecosystem Capabilities</span>
+          </div>
+          <h2 id="features-heading" class="section-title">Built for Reference Systems, R2R Ladder DACs &amp; Living Rooms.</h2>
+          <p class="section-desc">
+            Every subsystem in AMR is engineered in native Swift to preserve bit-accuracy while solving real-world acoustic, mastering, and ergonomic bottlenecks.
+          </p>
+        </div>
+
+        <div class="bento-grid">
+          <article class="bento-card">
+            <div class="bento-top">
+              <span class="bento-icon">🎯</span>
+              <span class="status-pill green">COREAUDIO HAL</span>
+            </div>
+            <h3>Auto Sample Rate Sync &amp; Muting Guard</h3>
+            <p>Switches external DAC hardware clocks across <code>44.1, 48, 88.2, 96, 176.4, and 192 kHz</code> bit-for-bit at <code>0.0 dBFS</code>, with optional 3-stage click-free relay muting during PLL lock.</p>
+            <div class="bento-tags">
+              <span class="bento-tag">100% Volume Lock</span>
+              <span class="bento-tag">AAC vs ALAC Lock</span>
+            </div>
+          </article>
+
+          <article class="bento-card">
+            <div class="bento-top">
+              <span class="bento-icon">🔬</span>
+              <span class="status-pill amber">vDSP 4096-PT FFT</span>
+            </div>
+            <h3>Spectral Fake Hi-Res &amp; LSB Verifier</h3>
+            <p>Detects <code>22.05 kHz</code> CD brickwall upsamples, <code>24 kHz</code> resamples, and 16-bit files zero-padded inside 24-bit containers in real time, with persistent local &amp; iCloud validation caching.</p>
+            <div class="bento-tags">
+              <span class="bento-tag">5 Verdicts</span>
+              <span class="bento-tag">LSB 0..7 Audit</span>
+            </div>
+          </article>
+
+          <article class="bento-card">
+            <div class="bento-top">
+              <span class="bento-icon">🎛️</span>
+              <span class="status-pill crimson">DSD512 &amp; 768K NOS</span>
+            </div>
+            <h3>7EC Viterbi DSD &amp; LNS15 R2R NOS</h3>
+            <p>Modulates PCM into <code>DSD64–DSD512 DoP</code> via a 7th-order Chebyshev modulator (<code>Trellis M=16</code> + <code>ISI</code> guard) or <code>768 kHz</code> NOS with 15th-order Lipshitz <code>LNS15</code> shaping (<code>-168 dBFS</code>).</p>
+            <div class="bento-tags">
+              <span class="bento-tag">Hog + Int 0x4c</span>
+              <span class="bento-tag">Holo / Denafrips</span>
+            </div>
+          </article>
+
+          <article class="bento-card">
+            <div class="bento-top">
+              <span class="bento-icon">⚡</span>
+              <span class="status-pill cyan">AMX + METAL GPU</span>
+            </div>
+            <h3>65k AMX FP64 &amp; 262k Metal Kaiser FIR</h3>
+            <p>Choose ultra-efficient <code>65,536-tap</code> IEEE-754 <code>FP64</code> polyphase convolution on Apple Silicon AMX or surgical <code>262,144-tap</code> Overlap-Save <code>df64</code> Metal GPU filters in Linear or Minimum Phase.</p>
+            <div class="bento-tags">
+              <span class="bento-tag">&gt;155 dB Stopband</span>
+              <span class="bento-tag">0% Pre-Ring Min-Phase</span>
+            </div>
+          </article>
+
+          <article class="bento-card">
+            <div class="bento-top">
+              <span class="bento-icon">💎</span>
+              <span class="status-pill green">64-BIT PRE-DSP</span>
+            </div>
+            <h3>C1 Hermite De-Clipper &amp; Weiss De-Esser</h3>
+            <p>Reconstructs shaved <code>0 dBFS</code> Loudness War peaks up to <code>+4.2 dB</code> (auto-bypassing <code>DR11+</code> masters) and tames harsh vocal sibilance via level-independent <code>Sibilance-to-Body</code> subtraction.</p>
+            <div class="bento-tags">
+              <span class="bento-tag">256-Sample Lookahead</span>
+              <span class="bento-tag">Bit-Identical Idle</span>
+            </div>
+          </article>
+
+          <article class="bento-card">
+            <div class="bento-top">
+              <span class="bento-icon">📐</span>
+              <span class="status-pill cyan">HARMAN TARGET</span>
+            </div>
+            <h3>iPhone Mic Room Acoustic Auto-PEQ</h3>
+            <p>Sit in your listening chair with an iPhone or iPad: AMR plays calibrated Paul Kellet pink noise, compensates MEMS mic roll-off, and synthesizes up to 8 asymmetric <code>64-bit</code> biquad filters synced via iCloud.</p>
+            <div class="bento-tags">
+              <span class="bento-tag">USB + BluOS/DLNA</span>
+              <span class="bento-tag">No HTTPS Needed</span>
+            </div>
+          </article>
+
+          <article class="bento-card">
+            <div class="bento-top">
+              <span class="bento-icon">🌙</span>
+              <span class="status-pill neutral">BS.1770 K-WEIGHTED</span>
+            </div>
+            <h3>Late-Night Concert DRC (-63 dBFS Gate)</h3>
+            <p>Enjoy <code>DR18</code> symphonies at midnight: dual slow/fast K-weighted envelopes lift quiet strings up to <code>+9.5 dB</code> while a Hermite silence gate prevents tape-hiss pumping and caps peaks at <code>-1.0 dBTP</code>.</p>
+            <div class="bento-tags">
+              <span class="bento-tag">64-Sample Limiter</span>
+              <span class="bento-tag">Zero Hiss Pump</span>
+            </div>
+          </article>
+
+          <article class="bento-card">
+            <div class="bento-top">
+              <span class="bento-icon">🔊</span>
+              <span class="status-pill green">HARDWARE TCP</span>
+            </div>
+            <h3>External Amp TCP &amp; Crest SoundCheck</h3>
+            <p>Direct socket control for <strong>Rotel, Denon/Marantz, Hegel, NAD &amp; Lyngdorf</strong> amps with max-volume caps, hardware <code>iTunNORM</code> track normalization, Crest Compensation, and <code>[Music.app SC Guard]</code>.</p>
+            <div class="bento-tags">
+              <span class="bento-tag">0.0 dBFS Mac Out</span>
+              <span class="bento-tag">&lt;40% Smart Curve</span>
+            </div>
+          </article>
+
+          <article class="bento-card">
+            <div class="bento-top">
+              <span class="bento-icon">✨</span>
+              <span class="status-pill cyan">NEURAL ENGINE</span>
+            </div>
+            <h3>AI Curator, Sonic Bridge &amp; Infinite Wave</h3>
+            <p>On-device <code>FoundationModels</code> &amp; <code>512-D NLEmbedding</code> compute smooth 12-step SLERP trajectories between any two artists/moods and seamlessly auto-append fresh cosine-ordered tracks.</p>
+            <div class="bento-tags">
+              <span class="bento-tag">100% Local ANE</span>
+              <span class="bento-tag">+ Save as Playlist</span>
+            </div>
+          </article>
+
+          <article class="bento-card">
+            <div class="bento-top">
+              <span class="bento-icon">📡</span>
+              <span class="status-pill green">MULTI-ROOM</span>
+            </div>
+            <h3>BluOS &amp; DLNA 24/192 Lossless Relay</h3>
+            <p>Streams uncompressed <code>24-bit / 192 kHz</code> LPCM WAV directly to <strong>Bluesound NODE / POWERNODE</strong>, Eversolo, Wiim, and Volumio with bidirectional transport sync and Home Assistant TTS ducking.</p>
+            <div class="bento-tags">
+              <span class="bento-tag">/stream/live.wav</span>
+              <span class="bento-tag">UPnP :8090</span>
+            </div>
+          </article>
+
+          <article class="bento-card">
+            <div class="bento-top">
+              <span class="bento-icon">🌈</span>
+              <span class="status-pill crimson">40 FPS • &lt;2 MS</span>
+            </div>
+            <h3>4K StandBy TV, 60fps RTA &amp; WLED DDP</h3>
+            <p>Living room fullscreen mode with Apple Music HLS Motion Covers, 32-band ultrasonic RTA, and 16-zone <code>γ=2.4</code> WLED Ambilight driven by <code>Vision</code> attention saliency over UDP <code>:4048</code>.</p>
+            <div class="bento-tags">
+              <span class="bento-tag">5 Reactive Modes</span>
+              <span class="bento-tag">NoSleep Keepalive</span>
+            </div>
+          </article>
+
+          <article class="bento-card">
+            <div class="bento-top">
+              <span class="bento-icon">📖</span>
+              <span class="status-pill neutral">PDFKIT + AUTH</span>
+            </div>
+            <h3>Digital Booklets &amp; Per-Device Zero-Trust</h3>
+            <p>Multi-page liner notes, Wikipedia history, track-by-track guides, studio musician credits, local <code>.pdf</code> booklet rendering, granular per-client permissions, and iOS Lock Screen <code>MediaSession</code>.</p>
+            <div class="bento-tags">
+              <span class="bento-tag">QR Camera Invite</span>
+              <span class="bento-tag">Dynamic Island</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ======================================================================
+         6. STRUCTURED COMPARISON MATRIX (SEO & LLM HIGH-SIGNAL TABLE)
+         ====================================================================== -->
+    <section id="compare" aria-labelledby="compare-heading">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow-pill">
+            <span class="eyebrow-dot"></span>
+            <span>Technical Comparison Matrix</span>
+          </div>
+          <h2 id="compare-heading" class="section-title">How AMR v3.0 Compares Across the Ecosystem.</h2>
+          <p class="section-desc">
+            Roon does not support Apple Music, AirPlay 2 compromises Hi-Res streams, and standalone rate-switchers have no remote UI. AMR bridges every gap in a single native binary.
+          </p>
+        </div>
+
+        <div class="comparison-wrap">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th scope="col">Capability</th>
+                <th scope="col" class="col-amr">AMR v3.0 (macOS)</th>
+                <th scope="col">AirPlay 2</th>
+                <th scope="col">Apple iTunes Remote</th>
+                <th scope="col">Rate Switcher Apps</th>
+                <th scope="col">Roon</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Full Apple Music Catalog, Stations &amp; Mixes</strong></td>
+                <td class="col-amr cmp-yes">✓ Native Full Access</td>
+                <td class="cmp-yes">✓ Supported</td>
+                <td class="cmp-no">✕ Local Library Only</td>
+                <td class="cmp-partial">Passive Utility Only</td>
+                <td class="cmp-no">✕ Not Supported</td>
+              </tr>
+              <tr>
+                <td><strong>Auto Hardware DAC Rate Sync (44.1–192 kHz)</strong></td>
+                <td class="col-amr cmp-yes">✓ 0.0 dBFS + Muting Guard</td>
+                <td class="cmp-no">✕ 44.1/48k Cap (Often AAC)</td>
+                <td class="cmp-no">✕ Fixed Mac MIDI Rate</td>
+                <td class="cmp-yes">✓ Local Only</td>
+                <td class="cmp-yes">✓ Local / Qobuz / Tidal</td>
+              </tr>
+              <tr>
+                <td><strong>Real-Time 4096-pt FFT Fake Hi-Res Verifier</strong></td>
+                <td class="col-amr cmp-yes">✓ 5 Verdicts + 24-Bit LSB</td>
+                <td class="cmp-no">✕ None</td>
+                <td class="cmp-no">✕ None</td>
+                <td class="cmp-no">✕ None</td>
+                <td class="cmp-no">✕ Container Tag Only</td>
+              </tr>
+              <tr>
+                <td><strong>DSD64–512 DoP &amp; 768 kHz LNS15 R2R NOS</strong></td>
+                <td class="col-amr cmp-yes">✓ AMX FP64 + Metal 262k</td>
+                <td class="cmp-no">✕ None</td>
+                <td class="cmp-no">✕ None</td>
+                <td class="cmp-no">✕ None</td>
+                <td class="cmp-yes">✓ Paid Engine</td>
+              </tr>
+              <tr>
+                <td><strong>64-Bit Room Auto-PEQ via iPhone / iPad Mic</strong></td>
+                <td class="col-amr cmp-yes">✓ Built-In Harman Target</td>
+                <td class="cmp-no">✕ None</td>
+                <td class="cmp-no">✕ None</td>
+                <td class="cmp-no">✕ None</td>
+                <td class="cmp-partial">Manual REW Import</td>
+              </tr>
+              <tr>
+                <td><strong>Mastering C1 De-Clipper &amp; Weiss De-Esser</strong></td>
+                <td class="col-amr cmp-yes">✓ 64-Bit Pre-DSP Suite</td>
+                <td class="cmp-no">✕ None</td>
+                <td class="cmp-no">✕ None</td>
+                <td class="cmp-no">✕ None</td>
+                <td class="cmp-no">✕ None</td>
+              </tr>
+              <tr>
+                <td><strong>External Amp TCP + Hardware SoundCheck</strong></td>
+                <td class="col-amr cmp-yes">✓ Rotel, Hegel, Denon, NAD, Lyngdorf</td>
+                <td class="cmp-no">✕ Software Gain</td>
+                <td class="cmp-no">✕ Software Gain</td>
+                <td class="cmp-no">✕ None</td>
+                <td class="cmp-partial">Select Roon Ready</td>
+              </tr>
+              <tr>
+                <td><strong>BluOS &amp; DLNA 24-Bit / 192 kHz Relay</strong></td>
+                <td class="col-amr cmp-yes">✓ Uncompressed WAV Stream</td>
+                <td class="cmp-no">✕ AirPlay Ceiling</td>
+                <td class="cmp-no">✕ None</td>
+                <td class="cmp-no">✕ None</td>
+                <td class="cmp-partial">RAAT Endpoints</td>
+              </tr>
+              <tr>
+                <td><strong>On-Device Neural AI &amp; 512-D Sonic Bridge</strong></td>
+                <td class="col-amr cmp-yes">✓ Apple Neural Engine</td>
+                <td class="cmp-no">✕ None</td>
+                <td class="cmp-no">✕ None</td>
+                <td class="cmp-no">✕ None</td>
+                <td class="cmp-partial">Cloud Valence</td>
+              </tr>
+              <tr>
+                <td><strong>4K TV Mode, PDF Booklets &amp; 40fps WLED DDP</strong></td>
+                <td class="col-amr cmp-yes">✓ Built-In (&lt;2 ms UDP)</td>
+                <td class="cmp-no">✕ Apple TV Hardware Req.</td>
+                <td class="cmp-no">✕ None</td>
+                <td class="cmp-no">✕ None</td>
+                <td class="cmp-partial">Chromecast Display</td>
+              </tr>
+              <tr>
+                <td><strong>Price &amp; Source License</strong></td>
+                <td class="col-amr cmp-yes"><strong>$0 • MIT Open Source</strong></td>
+                <td>Built-In</td>
+                <td>Free (Unmaintained UI)</td>
+                <td>Free</td>
+                <td>$14.99/mo or $829.99</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ======================================================================
+         7. DOWNLOAD & SCANNABLE QR HUB
+         ====================================================================== -->
+    <section id="download" aria-labelledby="download-heading">
+      <div class="container">
+        <div class="section-head centered">
+          <div class="eyebrow-pill">
+            <span class="eyebrow-dot"></span>
+            <span>Download &amp; Quick QR Access</span>
+          </div>
+          <h2 id="download-heading" class="section-title">Deploy Your Reference Apple Music Server in 60 Seconds.</h2>
+          <p class="section-desc">
+            Single standalone macOS Menu Bar app (<code>AppleMusicRemoteMac-Universal.dmg</code>) compiled natively for both Apple Silicon and Intel Macs.
+          </p>
+        </div>
+
+        <div class="download-grid">
+          <!-- Left: Direct Installer + 3-Step Setup + Build from Source -->
+          <div class="download-card">
+            <div>
+              <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+                <span class="status-pill green">UNIVERSAL 2 BINARY • arm64 + x86_64</span>
+                <span class="mono" style="font-size:12px;color:var(--text-secondary);">macOS 14.0 Sonoma / 15.0 Sequoia+</span>
+              </div>
+
+              <h3 style="margin-top:14px;font-size:26px;font-weight:820;letter-spacing:-0.025em;">
+                Apple Music Remote v3.0.0
+              </h3>
+              <p style="margin-top:6px;font-size:14.5px;color:var(--text-secondary);">
+                Includes the native Menu Bar server, CoreAudio HAL engine, 64-bit Hybrid DSP suite, UPnP/BluOS streamer bridge, and embedded zero-install OLED Web PWA.
+              </p>
+
+              <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:12px;">
+                <a href="https://github.com/1orgar/amr/releases/latest/download/AppleMusicRemoteMac-Universal.dmg" class="btn btn-primary">
+                  <span>↓ Download AppleMusicRemoteMac-Universal.dmg</span>
+                </a>
+                <a href="https://github.com/1orgar/amr/releases" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                  <span>All Releases &amp; SHA-256</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="install-steps">
+              <div class="install-step">
+                <div class="install-step-num">STEP 01</div>
+                <h4>Drag to Applications</h4>
+                <p>Open the Universal <code>.dmg</code> and drop <code>Apple Music Remote.app</code> into <code>/Applications</code>.</p>
+              </div>
+              <div class="install-step">
+                <div class="install-step-num">STEP 02</div>
+                <h4>Grant Music Control</h4>
+                <p>Click the 🎵 menu bar icon, allow <code>Music.app</code> Automation, and pick your USB DAC or BluOS node.</p>
+              </div>
+              <div class="install-step">
+                <div class="install-step-num">STEP 03</div>
+                <h4>Scan Menu Bar QR</h4>
+                <p>Scan the menu bar QR invite with your iPhone, iPad, or TV and add the OLED remote to your Home Screen.</p>
+              </div>
+            </div>
+
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                <span class="mono" style="font-size:11px;color:var(--text-muted);">BUILD FROM SOURCE OR RUN 408 SWIFT TESTS</span>
+                <button type="button" class="copy-chip-btn" data-copy-text="git clone https://github.com/1orgar/amr.git && cd amr && ./build_universal_dmg.sh">Copy Commands</button>
+              </div>
+              <pre class="terminal-block"><span class="cmd-comment"># Clone &amp; build Universal 2 DMG (Xcode 15+ / Swift 5.9+)</span>
+git clone https://github.com/1orgar/amr.git &amp;&amp; cd amr
+./build_universal_dmg.sh
+xcrun swift test --package-path AppleMusicRemoteMac --parallel</pre>
+            </div>
+          </div>
+
+          <!-- Right: Scannable Vector QR Hub -->
+          <div class="qr-showcase-card" aria-label="Scannable Download QR Code">
+            <div class="qr-tabs" role="tablist">
+              <button type="button" class="qr-tab-btn active" data-qr-target="release">Latest DMG Release</button>
+              <button type="button" class="qr-tab-btn" data-qr-target="repo">GitHub Repository</button>
+            </div>
+
+            <div class="qr-large-stage">
+              <img id="qr-hub-img" src="./assets/qr-download.svg" alt="Scannable QR code for Apple Music Remote GitHub Release" width="200" height="200">
+            </div>
+
+            <div>
+              <div id="qr-hub-url" class="mono" style="font-size:12px;font-weight:700;color:var(--amr-cyan);">
+                github.com/1orgar/amr/releases/latest
+              </div>
+              <p id="qr-hub-caption" style="margin-top:6px;font-size:13px;color:var(--text-secondary);max-width:290px;">
+                Scan with iPhone or iPad camera to open the latest Universal macOS DMG release on GitHub.
+              </p>
+            </div>
+
+            <span class="status-pill neutral">ISO/IEC 18004 VERIFIED VECTOR QR</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ======================================================================
+         8. TECHNICAL FAQ (GOOGLE FEATURED SNIPPETS & LLM GROUNDING)
+         ====================================================================== -->
+    <section id="faq" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section-head centered">
+          <div class="eyebrow-pill">
+            <span class="eyebrow-dot"></span>
+            <span>Engineering FAQ</span>
+          </div>
+          <h2 id="faq-heading" class="section-title">Frequently Asked Technical Questions.</h2>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary>
+              <span>Why do audiophiles use AMR instead of AirPlay 2 or Apple's iOS iTunes Remote app?</span>
+              <span class="faq-chevron" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-answer">
+              macOS locks CoreAudio to a single static sample rate in <code>Audio MIDI Setup</code>, resampling your tracks unless switched manually. Meanwhile, AirPlay 2 from iOS/macOS frequently transcodes Apple Music streams to lossy <code>256 kbps AAC</code> or caps resolution at <code>44.1 / 48 kHz</code>, and Apple's legacy iTunes Remote app only browses local files—it cannot search the Apple Music streaming catalog, launch personalized stations, inspect the signal path, or switch DACs. AMR runs Apple Music natively on your Mac wired directly to your DAC (or streams uncompressed <code>24-bit / 192 kHz</code> WAV to BluOS/DLNA) while giving every phone, tablet, and TV a sub-15ms OLED remote.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>Does AMR install kernel extensions or virtual audio drivers like BlackHole?</span>
+              <span class="faq-chevron" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-answer">
+              No. AMR uses macOS Sonoma/Sequoia's native <code>AudioHardwareCreateProcessTap</code> CoreAudio API paired with custom C11 lock-free atomic SPSC ring buffers (<code>CAtomicPrimitives</code>). Zero virtual audio devices, kexts, or system-wide sound routing hacks are installed, and when Pre-DSP / Hybrid DSP is turned off, 100% pure hardware passthrough is active.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>How does AMR's 4096-point FFT Spectral Verifier spot fake "Hi-Res" tracks?</span>
+              <span class="faq-chevron" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-answer">
+              <code>SpectralIntegrityAnalyzer</code> performs continuous Hann-windowed <code>vDSP_fft_zrip</code> spectral analysis and bitwise Least Significant Bit (<code>LSB 0..7</code>) scanning directly on the PCM stream. If a track delivered in a <code>24-bit / 96 kHz</code> or <code>192 kHz</code> container exhibits a steep brickwall cliff at <code>22.05 kHz</code> or <code>24.0 kHz</code>, or has its bottom 8 bits filled with zeros, AMR flags it as <code>FAKE HI-RES • 22K CUT</code>, <code>UPSAMPLED 48K</code>, or <code>16-BIT PADDED</code> and caches the verdict for instant recall.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>What DACs benefit most from HQ PCM NOS (LNS15) vs DSD64–DSD512 DoP?</span>
+              <span class="faq-chevron" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-answer">
+              Discrete R2R / Multibit ladder DACs (such as <em>Holo Audio Spring/May, Denafrips Ares/Pontus/Venus/Terminator, Musician Pegasus, and Schiit Multibit</em>) shine with <strong>HQ PCM NOS</strong> up to <code>705.6 / 768 kHz</code> paired with the 15th-order Lipshitz <code>LNS15</code> noise shaper (<code>&lt; -165 dBFS</code> noise floor, <code>27+ effective bits</code>). USB DACs and DDCs with dedicated direct 1-bit paths (<em>Topping, SMSL PO100 PRO over I2S/S/PDIF, Matrix, Chord</em>) can engage <strong>DSD64–DSD512 DoP v1.1</strong> driven by AMR's 7th-order <code>7EC</code> modulator with Viterbi <code>Trellis M=16</code> look-ahead and <code>ISI</code> regularization.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>How does External Amplifier TCP SoundCheck normalize tracks without breaking Bit-Perfect?</span>
+              <span class="faq-chevron" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-answer">
+              Digital volume scaling destroys bit-perfection (and corrupts <code>0x05/0xFA</code> DoP markers). AMR keeps macOS output pegged at <code>100% (0.0 dBFS)</code> and connects over TCP to <strong>Rotel (<code>:9590</code>)</strong>, <strong>Denon / Marantz (<code>:23</code>)</strong>, <strong>Hegel (<code>:50001</code>)</strong>, <strong>NAD (<code>:30000</code>)</strong>, or <strong>Lyngdorf (<code>:84</code>)</strong>. It extracts Apple <code>iTunNORM</code> tags (via local atoms or millisecond HTTP Range header reads) or live <code>ITU-R BS.1770</code> LUFS, adds psychoacoustic <strong>Crest Factor Compensation</strong> for compressed masters, and adjusts your amplifier's hardware attenuator directly.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>Does AMR work on Intel Macs as well as Apple Silicon M1 / M2 / M3 / M4?</span>
+              <span class="faq-chevron" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-answer">
+              Yes. <code>AppleMusicRemoteMac-Universal.dmg</code> is a true Universal 2 binary containing native <code>arm64</code> and <code>x86_64</code> executables for macOS 14.0 Sonoma and newer. On Intel Macs (which lack the Apple Neural Engine), on-device AI curation switches are cleanly hidden with zero CPU overhead while all CoreAudio Bit-Perfect, FFT verification, Room Auto-PEQ, Amplifier TCP, BluOS/DLNA, and WLED features run natively.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer with Machine-Readable SEO & LLM Endpoints -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <img src="./assets/icon-pwa.svg" alt="AMR Bit-Perfect Emblem" width="30" height="30" style="border-radius:7px;">
+        <div>
+          <div style="font-size:14px;font-weight:740;">Apple Music Remote (AMR) v3.0</div>
+          <div class="mono" style="font-size:11.5px;color:var(--text-muted);">Crafted in Pure Swift for macOS • MIT License</div>
+        </div>
+      </div>
+
+      <nav class="footer-links" aria-label="Footer and Machine-Readable Links">
+        <a href="https://github.com/1orgar/amr" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
+        <a href="https://github.com/1orgar/amr/releases/latest" target="_blank" rel="noopener noreferrer">Latest DMG</a>
+        <a href="./llms.txt">llms.txt</a>
+        <a href="./llms-full.txt">llms-full.txt</a>
+        <a href="./sitemap.xml">Sitemap</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Quick Scannable QR Modal -->
+  <div id="qr-modal" class="modal-backdrop" hidden role="dialog" aria-modal="true" aria-labelledby="qr-modal-title">
+    <div class="qr-modal-card">
+      <div class="qr-modal-head">
+        <strong id="qr-modal-title" style="font-size:16px;">Scan to Open AMR Release</strong>
+        <button type="button" id="qr-modal-close" class="qr-modal-close" aria-label="Close QR Modal">&times;</button>
+      </div>
+      <div class="qr-large-stage" style="margin:0 auto 16px;">
+        <img src="./assets/qr-download.svg" alt="QR Code for https://github.com/1orgar/amr/releases/latest" width="200" height="200">
+      </div>
+      <p style="font-size:13px;color:var(--text-secondary);margin-bottom:16px;">
+        Point your camera to open <code>github.com/1orgar/amr/releases/latest</code> or download directly on macOS below.
+      </p>
+      <a href="https://github.com/1orgar/amr/releases/latest/download/AppleMusicRemoteMac-Universal.dmg" class="btn btn-primary" style="width:100%;">
+        ↓ Download Universal .dmg
+      </a>
+    </div>
+  </div>
+
+  <!-- Interactive Scripts -->
+  <script src="./js/data.js" defer></script>
+  <script src="./js/devices-demo.js" defer></script>
+  <script src="./js/charts-lab.js" defer></script>
+  <script src="./js/architecture.js" defer></script>
+  <script src="./js/main.js" defer></script>
+</body>
+</html>

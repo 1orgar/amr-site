@@ -1,0 +1,27 @@
+# Apple Music Remote (AMR)
+
+> **Apple Music Remote (AMR)** (`v3.0.0`) is a free, open-source (MIT), 100% pure Swift native macOS audio server, 64-bit Hybrid DSP engine, and zero-latency remote control for **Apple Music** (`Music.app`). It turns any Mac (`macOS 14.0 Sonoma+`, Universal 2 `arm64` Apple Silicon & `x86_64` Intel) into a reference audiophile streamer with automatic hardware DAC sample rate switching (`44.1–192 kHz`), real-time `4096-point vDSP FFT` fake Hi-Res detection, optional `DSD64–DSD512 DoP` & `768 kHz HQ PCM NOS` (`LNS15`) upsampling, `64-bit` Room Acoustic Auto-PEQ measured via iPhone/iPad microphone, external TCP amplifier volume & hardware `iTunNORM` SoundCheck normalization, lossless `24-bit / 192 kHz` BluOS & DLNA streaming, `40 FPS` WLED DDP Ambilight, and on-device Apple Neural Engine (`512-D NLEmbedding`) AI curation.
+
+## Canonical Links
+
+- [Interactive Product Site](https://amraudio.app/): Live multi-device simulator, interactive FFT & Room EQ charts, and signal path architecture.
+- [Complete LLM Technical Specification (`llms-full.txt`)](https://amraudio.app/llms-full.txt): Exhaustive engineering documentation, DSP equations, supported hardware protocols, and REST/WebSocket API schemas.
+- [GitHub Repository (`1orgar/amr`)](https://github.com/1orgar/amr): Pure Swift source code (`198` Swift files, `408` XCTest unit tests), build scripts, and issue tracker.
+- [Latest macOS Universal DMG Download](https://github.com/1orgar/amr/releases/latest/download/AppleMusicRemoteMac-Universal.dmg): Direct Universal 2 installer (`arm64 + x86_64`) for macOS 14.0+.
+- [GitHub Releases & Changelog](https://github.com/1orgar/amr/releases): Signed release artifacts and SHA-256 checksums.
+
+## Core Problems Solved by AMR
+
+1. **macOS Sample Rate Lock**: Native macOS `CoreAudio` forces fixed output sample rates in `Audio MIDI Setup`, resampling `44.1 / 88.2 / 96 / 192 kHz` Apple Music tracks. AMR automatically switches external USB/I2S/S/PDIF/Thunderbolt DAC clocks bit-for-bit (`0.0 dBFS`, optional `Hog Mode + Direct Signed Integer 0x4c`) with a 3-stage click-free `DAC Muting Guard`.
+2. **AirPlay 2 Lossy / 48 kHz Ceiling**: AirPlay 2 from iOS/macOS often transcodes Apple Music streams to `256 kbps AAC` or caps resolution at `44.1/48 kHz`. AMR plays Apple Music directly on the Mac wired to your DAC (or relays uncompressed `24-bit / 192 kHz` LPCM WAV to Bluesound / BluOS and UPnP/DLNA streamers) while your iPhone, iPad, Android, Desktop, or Living Room TV acts purely as a `<15 ms` WebSocket remote.
+3. **Fake Upsampled "Hi-Res" Releases**: `SpectralIntegrityAnalyzer` runs continuous `4096-pt Hann FFT` (`Accelerate / vDSP`) and `LSB 0..7` bit-activity checks on the live PCM tap (`AudioHardwareCreateProcessTap`, zero virtual audio cables required) to classify every track into `TRUE HI-RES`, `FAKE HI-RES • 22K CUT`, `UPSAMPLED 48K`, `16-BIT PADDED`, or `CD LOSSLESS`.
+4. **R2R Multibit & Native DSD DAC Optimization**: Built-in 64-bit Hybrid DSP (`Accelerate AMX FP64` 65,536-tap & `Metal GPU Overlap-Save df64` 262,144-tap Kaiser convolution) modulates PCM into `DSD64 / DSD128 / DSD256 / DSD512` (`DoP v1.1` `0x05/0xFA`, 7th-order `7EC` modulator with Viterbi `Trellis M=4/8/16` & `ISI` regularizer) or `705.6 / 768 kHz HQ PCM NOS` with 15th-order Lipshitz `LNS15` psychoacoustic noise shaping (`< -165 dBFS` audible noise floor, `27+ effective bits`).
+5. **Loudness War Clipping & Room Modes**: Pre-DSP `64-bit` suite includes a `256-sample` look-ahead `C1` cubic Hermite `MasteringDeClipper` (`up to +4.2 dB`), level-independent `Weiss-Style Dynamic De-Esser`, `64-bit Auto-PEQ` room acoustic correction calibrated with an iPhone/iPad microphone to the Harman In-Room Target, and `ITU-R BS.1770 K-Weighted` `Late-Night Concert DRC`.
+6. **Hardware Volume & Track Normalization without Digital Truncation**: `ExternalAmpTCPController` controls Rotel (`:9590`), Denon/Marantz (`:23`), Hegel (`:50001`), NAD (`:30000`), and Lyngdorf (`:84`) amplifiers over TCP while keeping macOS output locked at `100% (0.0 dBFS)`, applying `iTunNORM` / `BS.1770` track normalization + `Crest Factor Compensation` directly in the amplifier's hardware attenuator.
+
+## System Summary
+
+- **Platform**: macOS 14.0 Sonoma, macOS 15.0 Sequoia, and newer (`arm64` Apple Silicon M1/M2/M3/M4 & `x86_64` Intel; Neural Engine AI requires Apple Silicon).
+- **Client Support**: Zero-install OLED Progressive Web App (PWA) for iPhone (with Lock Screen & Dynamic Island `MediaSession`), iPad, Android, macOS/Windows/Linux browsers, and 4K Living Room Smart TVs (`StandBy Mode` with `60fps` 32-band RTA & HLS Motion Covers).
+- **Smart Home & Lighting**: UPnP/DLNA MediaRenderer (`:8090` SSDP) for Home Assistant with TTS `Audio Ducking` (`/api/duck`, `/api/unduck`), plus ultra-low-latency (`<2 ms`, `40 FPS`) 16-zone `WLED DDP` (`UDP :4048`) audio-reactive Ambilight.
+- **License & Price**: Free & Open Source under the MIT License (`$0`).

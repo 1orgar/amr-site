@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#000000"/>
+      <stop offset="55%" stop-color="#09090d"/>
+      <stop offset="100%" stop-color="#0f0a16"/>
+    </linearGradient>
+    <radialGradient id="crimsonGlow" cx="22%" cy="32%" r="48%">
+      <stop offset="0%" stop-color="#fa2d48" stop-opacity="0.32"/>
+      <stop offset="60%" stop-color="#7928ca" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="cyanGlow" cx="82%" cy="68%" r="46%">
+      <stop offset="0%" stop-color="#00d2ff" stop-opacity="0.22"/>
+      <stop offset="55%" stop-color="#30d158" stop-opacity="0.09"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fa233b"/>
+      <stop offset="50%" stop-color="#c837ab"/>
+      <stop offset="100%" stop-color="#00d2ff"/>
+    </linearGradient>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#151519"/>
+      <stop offset="100%" stop-color="#0c0c0f"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#crimsonGlow)"/>
+  <rect width="1200" height="630" fill="url(#cyanGlow)"/>
+
+  <!-- Subtle precision grid -->
+  <g stroke="rgba(255,255,255,0.035)" stroke-width="1">
+    <line x1="0" y1="126" x2="1200" y2="126"/>
+    <line x1="0" y1="252" x2="1200" y2="252"/>
+    <line x1="0" y1="378" x2="1200" y2="378"/>
+    <line x1="0" y1="504" x2="1200" y2="504"/>
+    <line x1="240" y1="0" x2="240" y2="630"/>
+    <line x1="480" y1="0" x2="480" y2="630"/>
+    <line x1="720" y1="0" x2="720" y2="630"/>
+    <line x1="960" y1="0" x2="960" y2="630"/>
+  </g>
+
+  <!-- Left Column: Brand + Headline -->
+  <g transform="translate(68, 66)">
+    <!-- Squircle Icon -->
+    <rect x="0" y="0" width="68" height="68" rx="16" fill="#141022" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
+    <g fill="url(#brandGrad)">
+      <rect x="14" y="29" width="5" height="16" rx="2.5"/>
+      <rect x="22" y="20" width="5" height="28" rx="2.5"/>
+      <rect x="31" y="13" width="6" height="42" rx="3"/>
+      <rect x="41" y="22" width="5" height="26" rx="2.5"/>
+      <rect x="49" y="27" width="5" height="18" rx="2.5"/>
+    </g>
+
+    <!-- Eyebrow Pill -->
+    <rect x="86" y="16" width="322" height="36" rx="18" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+    <circle cx="106" cy="34" r="5" fill="#30d158"/>
+    <text x="120" y="39" fill="#e5e5ea" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="700" letter-spacing="1.4">AMR v3.0 • PURE SWIFT MACOS</text>
+
+    <!-- Main Headline -->
+    <text x="0" y="152" fill="#ffffff" font-family="-apple-system, Helvetica Neue, sans-serif" font-size="58" font-weight="800" letter-spacing="-1.8">Apple Music Remote</text>
+    <text x="0" y="214" fill="#9e9ea6" font-family="-apple-system, Helvetica Neue, sans-serif" font-size="32" font-weight="600" letter-spacing="-0.6">Bit-Perfect CoreAudio &amp; 64-Bit Hybrid DSP</text>
+
+    <text x="0" y="268" fill="#8e8e96" font-family="-apple-system, Helvetica Neue, sans-serif" font-size="19" font-weight="400">Auto 44.1–192 kHz DAC sync • DSD512 DoP &amp; 768 kHz LNS15 NOS</text>
+    <text x="0" y="298" fill="#8e8e96" font-family="-apple-system, Helvetica Neue, sans-serif" font-size="19" font-weight="400">4096-pt FFT Fake Hi-Res Detector • Room Auto-PEQ • Neural AI</text>
+
+    <!-- Spec Pills -->
+    <g transform="translate(0, 342)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="700">
+      <rect x="0" y="0" width="166" height="38" rx="10" fill="rgba(48,209,88,0.13)" stroke="rgba(48,209,88,0.45)"/>
+      <text x="83" y="24" text-anchor="middle" fill="#30d158">0.0 dBFS BIT-PERFECT</text>
+
+      <rect x="178" y="0" width="172" height="38" rx="10" fill="rgba(250,45,72,0.14)" stroke="rgba(250,45,72,0.45)"/>
+      <text x="264" y="24" text-anchor="middle" fill="#ff4560">DSD512 • 7EC TRELLIS</text>
+
+      <rect x="362" y="0" width="174" height="38" rx="10" fill="rgba(100,210,255,0.12)" stroke="rgba(100,210,255,0.4)"/>
+      <text x="449" y="24" text-anchor="middle" fill="#70d7ff">-165 dBFS LNS15 NOS</text>
+
+      <rect x="0" y="50" width="188" height="38" rx="10" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.14)"/>
+      <text x="94" y="74" text-anchor="middle" fill="#ffffff">BLUOS &amp; DLNA 24/192</text>
+
+      <rect x="200" y="50" width="168" height="38" rx="10" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.14)"/>
+      <text x="284" y="74" text-anchor="middle" fill="#ffffff">AMP TCP SOUNDCHECK</text>
+
+      <rect x="380" y="50" width="156" height="38" rx="10" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.14)"/>
+      <text x="458" y="74" text-anchor="middle" fill="#ffffff">WLED DDP 40 FPS</text>
+    </g>
+
+    <text x="0" y="486" fill="#636369" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" letter-spacing="1">github.com/1orgar/amr  •  macOS 14.0+ Universal (Apple Silicon &amp; Intel)  •  MIT License</text>
+  </g>
+
+  <!-- Right Column: Signal Path Inspector Mock Card -->
+  <g transform="translate(716, 62)">
+    <rect x="0" y="0" width="420" height="506" rx="24" fill="url(#cardBg)" stroke="#28282e" stroke-width="1.5"/>
+    <text x="26" y="42" fill="#ffffff" font-family="-apple-system, Helvetica Neue, sans-serif" font-size="18" font-weight="700">Signal Path</text>
+    <rect x="274" y="22" width="120" height="26" rx="7" fill="rgba(48,209,88,0.16)" stroke="rgba(48,209,88,0.45)"/>
+    <text x="334" y="39" text-anchor="middle" fill="#30d158" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" font-weight="700" letter-spacing="0.8">TRUE HI-RES</text>
+    <line x1="0" y1="62" x2="420" y2="62" stroke="#222227"/>
+
+    <!-- Node 1 -->
+    <rect x="24" y="82" width="372" height="78" rx="14" fill="#17171c" stroke="#2a2a31"/>
+    <circle cx="46" cy="108" r="5" fill="#30d158"/>
+    <text x="62" y="112" fill="#8e8e95" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" font-weight="700" letter-spacing="1">SOURCE • APPLE MUSIC</text>
+    <text x="376" y="112" text-anchor="end" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" font-weight="700">ALAC 24/192</text>
+    <text x="62" y="140" fill="#ffffff" font-family="-apple-system, Helvetica Neue, sans-serif" font-size="15" font-weight="600">4096-pt vDSP FFT • 24-Bit LSB Verified</text>
+
+    <line x1="46" y1="160" x2="46" y2="180" stroke="#30d158" stroke-width="2"/>
+
+    <!-- Node 2 -->
+    <rect x="24" y="180" width="372" height="92" rx="14" fill="#17171c" stroke="#2a2a31"/>
+    <circle cx="46" cy="206" r="5" fill="#fa2d48"/>
+    <text x="62" y="210" fill="#8e8e95" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" font-weight="700" letter-spacing="1">HYBRID 64-BIT ENGINE</text>
+    <text x="376" y="210" text-anchor="end" fill="#30d158" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" font-weight="700">HOG • INT 0x4c</text>
+    <text x="62" y="237" fill="#ffffff" font-family="-apple-system, Helvetica Neue, sans-serif" font-size="15" font-weight="600">AMX FP64 / Metal 262k • Auto-PEQ</text>
+    <text x="62" y="258" fill="#8e8e95" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11.5">De-Clip C1 • Weiss De-Esser • DRC</text>
+
+    <line x1="46" y1="272" x2="46" y2="292" stroke="#30d158" stroke-width="2"/>
+
+    <!-- Node 3 -->
+    <rect x="24" y="292" width="372" height="78" rx="14" fill="#17171c" stroke="#2a2a31"/>
+    <circle cx="46" cy="318" r="5" fill="#70d7ff"/>
+    <text x="62" y="322" fill="#8e8e95" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" font-weight="700" letter-spacing="1">HARDWARE DAC &amp; AMP TCP</text>
+    <text x="376" y="322" text-anchor="end" fill="#70d7ff" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" font-weight="700">11.29 MHz</text>
+    <text x="62" y="350" fill="#ffffff" font-family="-apple-system, Helvetica Neue, sans-serif" font-size="15" font-weight="600">USB Reference DAC + Rotel TCP :9590</text>
+
+    <!-- Mini RTA Bars -->
+    <g transform="translate(24, 390)">
+      <rect x="0" y="0" width="372" height="92" rx="12" fill="#0d0d11" stroke="#23232a"/>
+      <line x1="256" y1="10" x2="256" y2="82" stroke="#ff9f0a" stroke-width="1.2" stroke-dasharray="3 3"/>
+      <text x="262" y="23" fill="#ff9f0a" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.5" font-weight="700">22.05k</text>
+      <g fill="#30d158" opacity="0.9">
+        <rect x="16" y="42" width="8" height="36" rx="2"/>
+        <rect x="30" y="28" width="8" height="50" rx="2"/>
+        <rect x="44" y="22" width="8" height="56" rx="2"/>
+        <rect x="58" y="26" width="8" height="52" rx="2"/>
+        <rect x="72" y="19" width="8" height="59" rx="2"/>
+        <rect x="86" y="24" width="8" height="54" rx="2"/>
+        <rect x="100" y="29" width="8" height="49" rx="2"/>
+        <rect x="114" y="32" width="8" height="46" rx="2"/>
+        <rect x="128" y="27" width="8" height="51" rx="2"/>
+        <rect x="142" y="34" width="8" height="44" rx="2"/>
+        <rect x="156" y="37" width="8" height="41" rx="2"/>
+        <rect x="170" y="33" width="8" height="45" rx="2"/>
+        <rect x="184" y="39" width="8" height="39" rx="2"/>
+        <rect x="198" y="43" width="8" height="35" rx="2"/>
+        <rect x="212" y="46" width="8" height="32" rx="2"/>
+        <rect x="226" y="49" width="8" height="29" rx="2"/>
+        <rect x="240" y="52" width="8" height="26" rx="2"/>
+      </g>
+      <g fill="#70d7ff" opacity="0.88">
+        <rect x="266" y="55" width="8" height="23" rx="2"/>
+        <rect x="280" y="58" width="8" height="20" rx="2"/>
+        <rect x="294" y="61" width="8" height="17" rx="2"/>
+        <rect x="308" y="64" width="8" height="14" rx="2"/>
+        <rect x="322" y="67" width="8" height="11" rx="2"/>
+        <rect x="336" y="70" width="8" height="8" rx="2"/>
+        <rect x="350" y="72" width="8" height="6" rx="2"/>
+      </g>
+    </g>
+  </g>
+</svg>

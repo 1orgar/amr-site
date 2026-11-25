@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#051322"/>
+      <stop offset="60%" stop-color="#0a243d"/>
+      <stop offset="100%" stop-color="#04080f"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#3a86ff" stop-opacity="0.62"/>
+      <stop offset="55%" stop-color="#00b4d8" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg)"/>
+  <rect width="600" height="600" fill="url(#glow)"/>
+  <g fill="#64d2ff" opacity="0.85">
+    <rect x="84" y="140" width="28" height="300" rx="2"/>
+    <rect x="132" y="190" width="28" height="250" rx="2" opacity="0.65"/>
+    <rect x="180" y="110" width="28" height="330" rx="2"/>
+    <rect x="228" y="220" width="28" height="220" rx="2" opacity="0.5"/>
+    <rect x="276" y="155" width="28" height="285" rx="2" fill="#ffffff"/>
+    <rect x="324" y="195" width="28" height="245" rx="2" opacity="0.7"/>
+    <rect x="372" y="130" width="28" height="310" rx="2"/>
+    <rect x="420" y="240" width="28" height="200" rx="2" opacity="0.45"/>
+    <rect x="468" y="175" width="28" height="265" rx="2" opacity="0.8"/>
+  </g>
+  <text x="84" y="505" fill="#ffffff" font-family="-apple-system, Helvetica Neue, sans-serif" font-size="30" font-weight="800" letter-spacing="-0.5">MIDNIGHT MODAL</text>
+  <text x="84" y="538" fill="#70d7ff" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" letter-spacing="2.5">192 KHZ TAPE TRANSFER • DSD256</text>
+</svg>

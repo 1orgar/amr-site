@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0d14"/>
+      <stop offset="100%" stop-color="#171324"/>
+    </linearGradient>
+    <radialGradient id="violet" cx="52%" cy="42%" r="50%">
+      <stop offset="0%" stop-color="#bf5af2" stop-opacity="0.52"/>
+      <stop offset="55%" stop-color="#5e5ce6" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg)"/>
+  <circle cx="310" cy="255" r="270" fill="url(#violet)"/>
+  <circle cx="300" cy="265" r="128" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.8"/>
+  <circle cx="332" cy="250" r="112" fill="#0e0e17"/>
+  <g stroke="rgba(255,255,255,0.22)" stroke-width="1">
+    <line x1="80" y1="435" x2="520" y2="435"/>
+    <line x1="80" y1="447" x2="520" y2="447"/>
+    <line x1="80" y1="459" x2="520" y2="459"/>
+    <line x1="80" y1="471" x2="520" y2="471"/>
+    <line x1="80" y1="483" x2="520" y2="483"/>
+  </g>
+  <text x="80" y="532" fill="#ffffff" font-family="Georgia, serif" font-size="26" font-style="italic">Nocturne Op. 27 Live</text>
+  <text x="80" y="560" fill="rgba(255,255,255,0.58)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12.5" letter-spacing="2">DR18 SYMPHONIC RECORDING • 24/96</text>
+</svg>

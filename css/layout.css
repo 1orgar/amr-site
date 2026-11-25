@@ -1,0 +1,757 @@
+/* ==========================================================================
+   AMR Landing Page — Structural Layout, Navigation, Hero, Tables, Download & FAQ
+   ========================================================================== */
+
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 2;
+}
+
+section {
+  padding: 96px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.section-divider {
+  height: 1px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+}
+
+.section-head {
+  max-width: 780px;
+  margin-bottom: 44px;
+}
+
+.section-head.centered {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.section-title {
+  margin-top: 14px;
+  font-size: clamp(28px, 3.6vw, 44px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+  color: var(--text-primary);
+}
+
+.section-desc {
+  margin-top: 14px;
+  font-size: clamp(15.5px, 1.4vw, 18px);
+  color: var(--text-secondary);
+  line-height: 1.62;
+}
+
+/* ==========================================================================
+   Sticky Top Navigation
+   ========================================================================== */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(4, 4, 6, 0.8);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.nav-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  flex-shrink: 0;
+}
+
+.brand-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+}
+
+.brand-name {
+  font-size: 16px;
+  font-weight: 760;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.brand-ver-chip {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #c8c8d0;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-links a {
+  padding: 7px 11px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 550;
+  color: var(--text-secondary);
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.btn-nav-download {
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 9px;
+  font-size: 13px;
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+
+.hero-section {
+  padding: 72px 0 64px;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+  gap: 40px;
+  align-items: center;
+}
+
+.hero-title {
+  margin-top: 18px;
+  font-size: clamp(36px, 5vw, 62px);
+  font-weight: 840;
+  letter-spacing: -0.038em;
+  line-height: 1.05;
+}
+
+.hero-gradient-span {
+  background: linear-gradient(95deg, #ffffff 0%, #ff5c77 45%, #70d7ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-lead {
+  margin-top: 20px;
+  font-size: clamp(16px, 1.45vw, 19px);
+  color: var(--text-secondary);
+  max-width: 660px;
+  line-height: 1.62;
+}
+
+.hero-lead strong {
+  color: #f2f2f7;
+  font-weight: 640;
+}
+
+.hero-cta-row {
+  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-meta-line {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.hero-meta-line span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Hero Right: Quick QR & Release Telemetry Dock */
+.hero-qr-dock {
+  background: linear-gradient(180deg, rgba(24, 24, 30, 0.9) 0%, rgba(12, 12, 16, 0.95) 100%);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hero-qr-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.hero-qr-body {
+  display: grid;
+  grid-template-columns: 128px 1fr;
+  gap: 16px;
+  align-items: center;
+}
+
+.qr-frame-mini {
+  width: 128px;
+  height: 128px;
+  padding: 6px;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.qr-frame-mini img {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-qr-copy h2 {
+  font-size: 15.5px;
+  font-weight: 720;
+  letter-spacing: -0.01em;
+}
+
+.hero-qr-copy p {
+  margin-top: 5px;
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  line-height: 1.48;
+}
+
+.hero-qr-specs {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.hero-cmd-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: #08080b;
+  border: 1px solid #202028;
+  border-radius: 10px;
+  padding: 9px 12px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: #d1d1dc;
+}
+
+.hero-cmd-box code {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.copy-chip-btn {
+  flex-shrink: 0;
+  padding: 4px 9px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #ffffff;
+  transition: background 0.15s ease;
+}
+
+.copy-chip-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+/* Telemetry Strip */
+.telemetry-strip {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.telemetry-cell {
+  background: rgba(18, 18, 22, 0.76);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.telemetry-cell:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-2px);
+}
+
+.telemetry-val {
+  font-family: var(--font-mono);
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.telemetry-label {
+  margin-top: 4px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #d4d4dc;
+}
+
+.telemetry-sub {
+  margin-top: 2px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Comparison Matrix Table (SEO & LLM Rich Structured Table)
+   ========================================================================== */
+
+.comparison-wrap {
+  background: var(--surface-0);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow-x: auto;
+  box-shadow: 0 20px 56px rgba(0, 0, 0, 0.6);
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 820px;
+  font-size: 13.5px;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.065);
+  vertical-align: middle;
+}
+
+.comparison-table thead th {
+  background: #121217;
+  font-size: 12px;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  position: sticky;
+  top: 0;
+}
+
+.comparison-table thead th.col-amr,
+.comparison-table tbody td.col-amr {
+  background: rgba(250, 45, 72, 0.065);
+  border-left: 1px solid rgba(250, 45, 72, 0.25);
+  border-right: 1px solid rgba(250, 45, 72, 0.25);
+}
+
+.comparison-table thead th.col-amr {
+  color: #ffffff;
+  background: rgba(250, 45, 72, 0.16);
+}
+
+.comparison-table tbody tr:hover td {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.comparison-table tbody tr:hover td.col-amr {
+  background: rgba(250, 45, 72, 0.1);
+}
+
+.cmp-yes {
+  color: var(--amr-green);
+  font-weight: 650;
+}
+
+.cmp-partial {
+  color: var(--amr-amber);
+  font-weight: 550;
+}
+
+.cmp-no {
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Download & QR Hub Section
+   ========================================================================== */
+
+.download-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.download-card,
+.qr-showcase-card {
+  background: linear-gradient(180deg, #131318 0%, #0b0b0e 100%);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 22px;
+}
+
+.install-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.install-step {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.install-step-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--amr-crimson);
+}
+
+.install-step h4 {
+  margin-top: 4px;
+  font-size: 13.5px;
+  font-weight: 700;
+}
+
+.install-step p {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.terminal-block {
+  background: #060608;
+  border: 1px solid #22222b;
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: #d6d6e0;
+  overflow-x: auto;
+}
+
+.terminal-block .cmd-comment {
+  color: #6b6b78;
+}
+
+.qr-showcase-card {
+  align-items: center;
+  text-align: center;
+}
+
+.qr-tabs {
+  display: inline-flex;
+  padding: 4px;
+  border-radius: 10px;
+  background: #09090c;
+  border: 1px solid var(--border-subtle);
+  gap: 4px;
+}
+
+.qr-tab-btn {
+  padding: 7px 13px;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 650;
+  color: var(--text-secondary);
+  transition: all 0.16s ease;
+}
+
+.qr-tab-btn.active {
+  background: rgba(255, 255, 255, 0.11);
+  color: #ffffff;
+}
+
+.qr-large-stage {
+  width: 224px;
+  height: 224px;
+  padding: 12px;
+  background: #ffffff;
+  border-radius: 22px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+.qr-large-stage img {
+  width: 100%;
+  height: 100%;
+}
+
+/* ==========================================================================
+   Technical FAQ Accordion
+   ========================================================================== */
+
+.faq-list {
+  display: grid;
+  gap: 12px;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  background: var(--surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.faq-item[open] {
+  border-color: var(--border-strong);
+  background: #15151b;
+}
+
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 18px 22px;
+  font-size: 16px;
+  font-weight: 680;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-chevron {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text-secondary);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.faq-item[open] .faq-chevron {
+  transform: rotate(45deg);
+  color: #ffffff;
+  background: var(--amr-crimson-soft);
+}
+
+.faq-answer {
+  padding: 0 22px 20px;
+  font-size: 14.5px;
+  color: var(--text-secondary);
+  line-height: 1.66;
+}
+
+.faq-answer code {
+  background: rgba(255, 255, 255, 0.07);
+  padding: 2px 6px;
+  border-radius: 5px;
+  font-size: 12.5px;
+  color: #f2f2f7;
+}
+
+/* ==========================================================================
+   Site Footer & Quick QR Modal
+   ========================================================================== */
+
+.site-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 48px 0 56px;
+  background: rgba(5, 5, 7, 0.85);
+  position: relative;
+  z-index: 2;
+}
+
+.footer-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-backdrop[hidden] {
+  display: none !important;
+}
+
+.qr-modal-card {
+  width: 100%;
+  max-width: 400px;
+  background: #121217;
+  border: 1px solid var(--border-strong);
+  border-radius: 24px;
+  padding: 26px;
+  text-align: center;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.85);
+}
+
+.qr-modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.qr-modal-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 18px;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+
+@media (max-width: 1040px) {
+  .hero-grid,
+  .download-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .telemetry-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .nav-links {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .container,
+  .nav-inner {
+    padding: 0 16px;
+  }
+  .brand-ver-chip,
+  .nav-actions a[href*="github.com/1orgar/amr"]:not(.btn-nav-download) {
+    display: none;
+  }
+  .btn {
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+    height: auto;
+    min-height: 44px;
+    padding: 10px 16px;
+  }
+  .btn-nav-download,
+  .nav-actions .btn-ghost {
+    min-height: 34px;
+    height: 34px;
+    padding: 0 11px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  section {
+    padding: 64px 0;
+  }
+  .hero-section {
+    padding: 40px 0 44px;
+  }
+  .hero-cta-row .btn {
+    width: 100%;
+  }
+  .hero-qr-body {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    text-align: center;
+  }
+  .hero-qr-specs {
+    justify-content: center;
+  }
+  .telemetry-strip,
+  .install-steps {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .download-card,
+  .qr-showcase-card {
+    padding: 20px;
+  }
+}
