@@ -7,6 +7,7 @@
 - [Interactive Product Site](https://amraudio.app/): Live multi-device simulator, interactive FFT & Room EQ charts, and signal path architecture.
 - [Complete LLM Technical Specification (`llms-full.txt`)](https://amraudio.app/llms-full.txt): Exhaustive engineering documentation, DSP equations, supported hardware protocols, and REST/WebSocket API schemas.
 - [GitHub Repository (`1orgar/amr`)](https://github.com/1orgar/amr): Pure Swift source code (`410+` XCTest unit tests), Apple Developer ID signed & notarized Universal 2 builds, and issue tracker.
+- [Homebrew Tap (`1orgar/homebrew-tap`)](https://github.com/1orgar/homebrew-tap): Install via `brew tap 1orgar/tap && brew install --cask 1orgar/tap/amr`.
 - [Latest macOS Universal DMG Download](https://github.com/1orgar/amr/releases/latest/download/AppleMusicRemoteMac-Universal.dmg): Direct Apple-notarized Universal 2 installer (`arm64 + x86_64`) for macOS 14.0+ with zero Gatekeeper warnings and a zero-Keychain `AES-256-GCM` vault.
 - [GitHub Releases & Changelog](https://github.com/1orgar/amr/releases): Signed release artifacts and SHA-256 checksums.
 

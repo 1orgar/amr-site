@@ -188,6 +188,11 @@
               </button>
             </div>
 
+            <div style="margin-top:14px;display:inline-flex;align-items:center;gap:10px;max-width:100%;padding:7px 10px 7px 14px;border-radius:10px;background:#0a0a0d;border:1px solid #1e1e26;">
+              <span class="mono" style="font-size:12px;color:#e5e5ea;overflow-x:auto;white-space:nowrap;">$ brew install --cask 1orgar/tap/amr</span>
+              <button type="button" class="copy-chip-btn" data-copy-text="brew tap 1orgar/tap && { brew trust 1orgar/tap 2>/dev/null || true; } && brew install --cask 1orgar/tap/amr">Copy</button>
+            </div>
+
             <div class="hero-meta-line">
               <span>Apple Signed &amp; Notarized</span>
               <span>•</span>
@@ -892,7 +897,15 @@
 
             <div>
               <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
-                <span class="mono" style="font-size:10.5px;color:var(--text-muted);">BUILD FROM SOURCE</span>
+                <span class="mono" style="font-size:10.5px;color:var(--text-muted);">INSTALL VIA HOMEBREW CASK</span>
+                <button type="button" class="copy-chip-btn" data-copy-text="brew tap 1orgar/tap && { brew trust 1orgar/tap 2>/dev/null || true; } && brew install --cask 1orgar/tap/amr">Copy</button>
+              </div>
+              <pre class="terminal-block">brew tap 1orgar/tap &amp;&amp; brew install --cask 1orgar/tap/amr</pre>
+            </div>
+
+            <div style="margin-top:12px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                <span class="mono" style="font-size:10.5px;color:var(--text-muted);">OR BUILD FROM SOURCE</span>
                 <button type="button" class="copy-chip-btn" data-copy-text="git clone https://github.com/1orgar/amr.git && cd amr && ./build_universal_dmg.sh">Copy</button>
               </div>
               <pre class="terminal-block">git clone https://github.com/1orgar/amr.git &amp;&amp; cd amr &amp;&amp; ./build_universal_dmg.sh</pre>

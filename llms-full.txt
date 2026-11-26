@@ -3,17 +3,18 @@
 > Comprehensive engineering whitepaper for AI assistants, search indexers, RAG pipelines, audiophiles, and smart-home developers.
 > Source Repository: https://github.com/1orgar/amr
 > Product Site: https://amraudio.app/
-> Direct Download (Universal macOS DMG): https://github.com/1orgar/amr/releases/latest/download/AppleMusicRemoteMac-Universal.dmg
+> Homebrew Cask: `brew tap 1orgar/tap && brew install --cask 1orgar/tap/amr` (https://github.com/1orgar/homebrew-tap)
+> Direct Download (Apple-Notarized Universal macOS DMG): https://github.com/1orgar/amr/releases/latest/download/AppleMusicRemoteMac-Universal.dmg
 > License: MIT (100% Free & Open Source)
 
 ---
 
 ## 1. Executive Summary
 
-**Apple Music Remote (AMR)** is a native pure-Swift macOS server (`LSUIElement` menu bar app) and zero-latency Progressive Web App (PWA) remote controller engineered to unlock true audiophile playback from **Apple Music (`Music.app`)**.
+**Apple Music Remote (AMR)** is a native pure-Swift macOS server (`LSUIElement` menu bar app, Apple Developer ID signed & notarized) and zero-latency Progressive Web App (PWA) remote controller engineered to unlock true audiophile playback from **Apple Music (`Music.app`)**.
 
 Unlike Electron wrappers, AirPlay receivers, or virtual-driver hacks:
-- AMR is compiled directly to native `arm64` and `x86_64` machine code (`198` Swift source files, `408` automated XCTest unit tests, zero third-party runtime dependencies) using Apple's `CoreAudio`, `AudioToolbox`, `Accelerate (vDSP / AMX)`, `Metal`, `Network.framework`, `ScriptingBridge`, `iTunesLibrary`, `NaturalLanguage`, `Vision`, `PDFKit`, and `CryptoKit`.
+- AMR is compiled directly to native `arm64` and `x86_64` machine code (`410+` automated XCTest unit tests, zero third-party runtime dependencies, zero-Keychain `AES-256-GCM` vault) using Apple's `CoreAudio`, `AudioToolbox`, `Accelerate (vDSP / AMX)`, `Metal`, `Network.framework`, `ScriptingBridge`, `iTunesLibrary`, `NaturalLanguage`, `Vision`, `PDFKit`, and `CryptoKit`.
 - Audio is captured non-intrusively via macOS 14.2+/14.0+ native **CoreAudio Process Tap (`AudioHardwareCreateProcessTap`)** with lock-free C11 Single-Producer Single-Consumer (`CAtomicPrimitives`) ring buffers and zero heap allocations on the real-time `IOProc` thread.
 - Every connected remote device (iPhone, iPad, Android, Desktop browser, 4K Living Room TV) communicates over persistent WebSocket (`ws://<mac-ip>:8080`) with `<15 ms` state synchronization, granular per-device zero-trust authorization (`ClientDeviceManager`), and instant camera QR pairing (`?invite=<token>`).
 
