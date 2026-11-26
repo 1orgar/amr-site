@@ -1,7 +1,7 @@
 {
   "name": "Apple Music Remote (AMR) — Bit-Perfect macOS Audio Server & 64-Bit Hybrid DSP",
   "short_name": "AMR",
-  "description": "High-performance pure Swift macOS server and remote control for Apple Music with automatic 44.1–192 kHz DAC switching, DSD512 DoP & 768 kHz NOS DSP, Room Auto-PEQ, and Apple Neural Engine AI curation.",
+  "description": "High-performance pure Swift macOS server and remote control for Apple Music with automatic 44.1–192 kHz DAC switching, DSD256 DoP & 768 kHz NOS DSP, Room Auto-PEQ, and Apple Neural Engine AI curation.",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#000000",

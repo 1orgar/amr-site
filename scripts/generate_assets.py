@@ -275,38 +275,21 @@ def generate_og_cover() -> None:
 
     svg_content = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
   <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#000000"/>
-      <stop offset="55%" stop-color="#09090d"/>
-      <stop offset="100%" stop-color="#0f0a16"/>
-    </linearGradient>
-    <radialGradient id="crimsonGlow" cx="22%" cy="32%" r="48%">
-      <stop offset="0%" stop-color="#fa2d48" stop-opacity="0.32"/>
-      <stop offset="60%" stop-color="#7928ca" stop-opacity="0.12"/>
-      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
-    </radialGradient>
-    <radialGradient id="cyanGlow" cx="82%" cy="68%" r="46%">
-      <stop offset="0%" stop-color="#00d2ff" stop-opacity="0.22"/>
-      <stop offset="55%" stop-color="#30d158" stop-opacity="0.09"/>
-      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
-    </radialGradient>
     <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#fa233b"/>
       <stop offset="50%" stop-color="#c837ab"/>
       <stop offset="100%" stop-color="#00d2ff"/>
     </linearGradient>
     <linearGradient id="cardBg" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#151519"/>
-      <stop offset="100%" stop-color="#0c0c0f"/>
+      <stop offset="0%" stop-color="#0e0e12"/>
+      <stop offset="100%" stop-color="#070709"/>
     </linearGradient>
   </defs>
 
-  <rect width="1200" height="630" fill="url(#bg)"/>
-  <rect width="1200" height="630" fill="url(#crimsonGlow)"/>
-  <rect width="1200" height="630" fill="url(#cyanGlow)"/>
+  <rect width="1200" height="630" fill="#000000"/>
 
   <!-- Subtle precision grid -->
-  <g stroke="rgba(255,255,255,0.035)" stroke-width="1">
+  <g stroke="rgba(255,255,255,0.03)" stroke-width="1">
     <line x1="0" y1="126" x2="1200" y2="126"/>
     <line x1="0" y1="252" x2="1200" y2="252"/>
     <line x1="0" y1="378" x2="1200" y2="378"/>
@@ -320,7 +303,7 @@ def generate_og_cover() -> None:
   <!-- Left Column: Brand + Headline -->
   <g transform="translate(68, 66)">
     <!-- Squircle Icon -->
-    <rect x="0" y="0" width="68" height="68" rx="16" fill="#141022" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
+    <rect x="0" y="0" width="68" height="68" rx="16" fill="#0c0c10" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
     <g fill="url(#brandGrad)">
       <rect x="14" y="29" width="5" height="16" rx="2.5"/>
       <rect x="22" y="20" width="5" height="28" rx="2.5"/>
@@ -330,7 +313,7 @@ def generate_og_cover() -> None:
     </g>
 
     <!-- Eyebrow Pill -->
-    <rect x="86" y="16" width="322" height="36" rx="18" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+    <rect x="86" y="16" width="322" height="36" rx="18" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
     <circle cx="106" cy="34" r="5" fill="#30d158"/>
     <text x="120" y="39" fill="#e5e5ea" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="700" letter-spacing="1.4">AMR v3.0 • PURE SWIFT MACOS</text>
 
@@ -338,7 +321,7 @@ def generate_og_cover() -> None:
     <text x="0" y="152" fill="#ffffff" font-family="-apple-system, Helvetica Neue, sans-serif" font-size="58" font-weight="800" letter-spacing="-1.8">Apple Music Remote</text>
     <text x="0" y="214" fill="#9e9ea6" font-family="-apple-system, Helvetica Neue, sans-serif" font-size="32" font-weight="600" letter-spacing="-0.6">Bit-Perfect CoreAudio &amp; 64-Bit Hybrid DSP</text>
 
-    <text x="0" y="268" fill="#8e8e96" font-family="-apple-system, Helvetica Neue, sans-serif" font-size="19" font-weight="400">Auto 44.1–192 kHz DAC sync • DSD512 DoP &amp; 768 kHz LNS15 NOS</text>
+    <text x="0" y="268" fill="#8e8e96" font-family="-apple-system, Helvetica Neue, sans-serif" font-size="19" font-weight="400">Auto 44.1–192 kHz DAC sync • DSD256 DoP &amp; 768 kHz LNS15 NOS</text>
     <text x="0" y="298" fill="#8e8e96" font-family="-apple-system, Helvetica Neue, sans-serif" font-size="19" font-weight="400">4096-pt FFT Fake Hi-Res Detector • Room Auto-PEQ • Neural AI</text>
 
     <!-- Spec Pills -->
@@ -347,7 +330,7 @@ def generate_og_cover() -> None:
       <text x="83" y="24" text-anchor="middle" fill="#30d158">0.0 dBFS BIT-PERFECT</text>
 
       <rect x="178" y="0" width="172" height="38" rx="10" fill="rgba(250,45,72,0.14)" stroke="rgba(250,45,72,0.45)"/>
-      <text x="264" y="24" text-anchor="middle" fill="#ff4560">DSD512 • 7EC TRELLIS</text>
+      <text x="264" y="24" text-anchor="middle" fill="#ff4560">DSD256 • 7EC TRELLIS</text>
 
       <rect x="362" y="0" width="174" height="38" rx="10" fill="rgba(100,210,255,0.12)" stroke="rgba(100,210,255,0.4)"/>
       <text x="449" y="24" text-anchor="middle" fill="#70d7ff">-165 dBFS LNS15 NOS</text>

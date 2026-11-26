@@ -1,5 +1,5 @@
 /* ==========================================================================
-   AMR Landing Page — Structural Layout, Navigation, Hero, Tables, Download & FAQ
+   AMR Landing Page — Pure Black (#000000) Laconic Layout
    ========================================================================== */
 
 .container {
@@ -7,26 +7,23 @@
   max-width: var(--max-w);
   margin: 0 auto;
   padding: 0 24px;
-  position: relative;
-  z-index: 2;
 }
 
 section {
-  padding: 96px 0;
-  position: relative;
-  z-index: 2;
+  padding: 80px 0;
+  background: #000000;
 }
 
 .section-divider {
   height: 1px;
   max-width: var(--max-w);
   margin: 0 auto;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background: #18181d;
 }
 
 .section-head {
-  max-width: 780px;
-  margin-bottom: 44px;
+  max-width: 720px;
+  margin-bottom: 36px;
 }
 
 .section-head.centered {
@@ -36,40 +33,36 @@ section {
 }
 
 .section-title {
-  margin-top: 14px;
-  font-size: clamp(28px, 3.6vw, 44px);
+  margin-top: 12px;
+  font-size: clamp(26px, 3.4vw, 40px);
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.12;
-  color: var(--text-primary);
 }
 
 .section-desc {
-  margin-top: 14px;
-  font-size: clamp(15.5px, 1.4vw, 18px);
+  margin-top: 10px;
+  font-size: clamp(15px, 1.3vw, 17px);
   color: var(--text-secondary);
-  line-height: 1.62;
+  line-height: 1.58;
 }
 
-/* ==========================================================================
-   Sticky Top Navigation
-   ========================================================================== */
-
+/* Sticky Monochrome Top Navigation */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(4, 4, 6, 0.8);
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.86);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid #18181d;
 }
 
 .nav-inner {
   max-width: var(--max-w);
   margin: 0 auto;
   padding: 0 24px;
-  height: 66px;
+  height: 62px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -79,18 +72,18 @@ section {
 .brand-link {
   display: inline-flex;
   align-items: center;
-  gap: 11px;
+  gap: 10px;
   flex-shrink: 0;
 }
 
 .brand-icon {
-  width: 34px;
-  height: 34px;
-  border-radius: 9px;
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
 }
 
 .brand-name {
-  font-size: 16px;
+  font-size: 15.5px;
   font-weight: 760;
   letter-spacing: -0.02em;
   display: flex;
@@ -104,30 +97,30 @@ section {
   font-weight: 700;
   padding: 2px 6px;
   border-radius: 5px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  color: #c8c8d0;
+  background: #121216;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
 }
 
 .nav-links a {
-  padding: 7px 11px;
+  padding: 6px 11px;
   border-radius: 8px;
-  font-size: 13.5px;
-  font-weight: 550;
+  font-size: 13px;
+  font-weight: 560;
   color: var(--text-secondary);
   transition: color 0.15s ease, background 0.15s ease;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
-  color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+  background: #121216;
 }
 
 .nav-actions {
@@ -138,112 +131,98 @@ section {
 }
 
 .btn-nav-download {
-  height: 36px;
+  height: 34px;
   padding: 0 14px;
-  border-radius: 9px;
-  font-size: 13px;
+  border-radius: 8px;
+  font-size: 12.5px;
 }
 
-/* ==========================================================================
-   Hero Section
-   ========================================================================== */
-
+/* Hero Section */
 .hero-section {
-  padding: 72px 0 64px;
+  padding: 64px 0 56px;
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
-  gap: 40px;
+  grid-template-columns: minmax(0, 1.3fr) minmax(290px, 0.7fr);
+  gap: 36px;
   align-items: center;
 }
 
 .hero-title {
-  margin-top: 18px;
-  font-size: clamp(36px, 5vw, 62px);
+  margin-top: 16px;
+  font-size: clamp(34px, 4.8vw, 58px);
   font-weight: 840;
   letter-spacing: -0.038em;
-  line-height: 1.05;
+  line-height: 1.06;
 }
 
-.hero-gradient-span {
-  background: linear-gradient(95deg, #ffffff 0%, #ff5c77 45%, #70d7ff 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+.hero-muted-span {
+  color: #8e8e98;
 }
 
 .hero-lead {
-  margin-top: 20px;
-  font-size: clamp(16px, 1.45vw, 19px);
+  margin-top: 16px;
+  font-size: clamp(15.5px, 1.35vw, 18px);
   color: var(--text-secondary);
-  max-width: 660px;
-  line-height: 1.62;
+  max-width: 620px;
+  line-height: 1.58;
 }
 
 .hero-lead strong {
-  color: #f2f2f7;
+  color: #ffffff;
   font-weight: 640;
 }
 
 .hero-cta-row {
-  margin-top: 28px;
+  margin-top: 24px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .hero-meta-line {
-  margin-top: 16px;
+  margin-top: 14px;
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 11.5px;
   color: var(--text-muted);
 }
 
-.hero-meta-line span {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-/* Hero Right: Quick QR & Release Telemetry Dock */
+/* Hero QR Card */
 .hero-qr-dock {
-  background: linear-gradient(180deg, rgba(24, 24, 30, 0.9) 0%, rgba(12, 12, 16, 0.95) 100%);
+  background: #09090b;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
-  padding: 22px;
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 .hero-qr-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 8px;
 }
 
 .hero-qr-body {
   display: grid;
-  grid-template-columns: 128px 1fr;
-  gap: 16px;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 14px;
   align-items: center;
 }
 
 .qr-frame-mini {
-  width: 128px;
-  height: 128px;
+  width: 112px;
+  height: 112px;
   padding: 6px;
-  border-radius: 14px;
+  border-radius: 12px;
   background: #ffffff;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
 }
 
 .qr-frame-mini img {
@@ -252,245 +231,162 @@ section {
 }
 
 .hero-qr-copy h2 {
-  font-size: 15.5px;
+  font-size: 15px;
   font-weight: 720;
-  letter-spacing: -0.01em;
 }
 
 .hero-qr-copy p {
-  margin-top: 5px;
+  margin-top: 4px;
   font-size: 12.5px;
   color: var(--text-secondary);
-  line-height: 1.48;
+  line-height: 1.45;
 }
 
-.hero-qr-specs {
-  margin-top: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.hero-cmd-box {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  background: #08080b;
-  border: 1px solid #202028;
-  border-radius: 10px;
-  padding: 9px 12px;
-  font-family: var(--font-mono);
-  font-size: 11.5px;
-  color: #d1d1dc;
-}
-
-.hero-cmd-box code {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.copy-chip-btn {
-  flex-shrink: 0;
-  padding: 4px 9px;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  font-weight: 700;
-  color: #ffffff;
-  transition: background 0.15s ease;
-}
-
-.copy-chip-btn:hover {
-  background: rgba(255, 255, 255, 0.16);
-}
-
-/* Telemetry Strip */
+/* Compact 4-Metric Strip */
 .telemetry-strip {
-  margin-top: 48px;
+  margin-top: 38px;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
 }
 
 .telemetry-cell {
-  background: rgba(18, 18, 22, 0.76);
+  background: #09090b;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 16px 18px;
-  transition: border-color 0.2s ease, transform 0.2s ease;
-}
-
-.telemetry-cell:hover {
-  border-color: var(--border-strong);
-  transform: translateY(-2px);
+  padding: 15px 16px;
 }
 
 .telemetry-val {
   font-family: var(--font-mono);
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 800;
   letter-spacing: -0.02em;
-  color: var(--text-primary);
 }
 
 .telemetry-label {
-  margin-top: 4px;
+  margin-top: 3px;
   font-size: 12.5px;
-  font-weight: 600;
-  color: #d4d4dc;
+  color: var(--text-secondary);
 }
 
-.telemetry-sub {
-  margin-top: 2px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text-muted);
-}
-
-/* ==========================================================================
-   Comparison Matrix Table (SEO & LLM Rich Structured Table)
-   ========================================================================== */
-
+/* Comparison Table */
 .comparison-wrap {
-  background: var(--surface-0);
+  background: #08080a;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   overflow-x: auto;
-  box-shadow: 0 20px 56px rgba(0, 0, 0, 0.6);
 }
 
 .comparison-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 820px;
+  min-width: 760px;
   font-size: 13.5px;
 }
 
 .comparison-table th,
 .comparison-table td {
-  padding: 14px 16px;
+  padding: 13px 16px;
   text-align: left;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.065);
-  vertical-align: middle;
+  border-bottom: 1px solid #19191f;
 }
 
 .comparison-table thead th {
-  background: #121217;
-  font-size: 12px;
+  background: #0d0d10;
+  font-size: 11.5px;
   font-family: var(--font-mono);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--text-secondary);
-  position: sticky;
-  top: 0;
 }
 
 .comparison-table thead th.col-amr,
 .comparison-table tbody td.col-amr {
-  background: rgba(250, 45, 72, 0.065);
-  border-left: 1px solid rgba(250, 45, 72, 0.25);
-  border-right: 1px solid rgba(250, 45, 72, 0.25);
+  background: #101311;
+  border-left: 1px solid rgba(48, 209, 88, 0.25);
+  border-right: 1px solid rgba(48, 209, 88, 0.25);
 }
 
 .comparison-table thead th.col-amr {
   color: #ffffff;
-  background: rgba(250, 45, 72, 0.16);
 }
 
-.comparison-table tbody tr:hover td {
-  background: rgba(255, 255, 255, 0.025);
-}
+.cmp-yes { color: var(--amr-green); font-weight: 650; }
+.cmp-partial { color: var(--amr-amber); }
+.cmp-no { color: var(--text-muted); }
 
-.comparison-table tbody tr:hover td.col-amr {
-  background: rgba(250, 45, 72, 0.1);
-}
-
-.cmp-yes {
-  color: var(--amr-green);
-  font-weight: 650;
-}
-
-.cmp-partial {
-  color: var(--amr-amber);
-  font-weight: 550;
-}
-
-.cmp-no {
-  color: var(--text-muted);
-}
-
-/* ==========================================================================
-   Download & QR Hub Section
-   ========================================================================== */
-
+/* Download & QR Hub */
 .download-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
-  gap: 24px;
-  align-items: stretch;
+  grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+  gap: 20px;
 }
 
 .download-card,
 .qr-showcase-card {
-  background: linear-gradient(180deg, #131318 0%, #0b0b0e 100%);
+  background: #09090b;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xl);
-  padding: 32px;
+  padding: 28px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 22px;
+  gap: 20px;
 }
 
 .install-steps {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
+  gap: 10px;
 }
 
 .install-step {
-  background: rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  padding: 14px;
+  background: #0f0f13;
+  border: 1px solid #1e1e24;
+  border-radius: 11px;
+  padding: 13px;
 }
 
 .install-step-num {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 700;
-  color: var(--amr-crimson);
+  color: var(--amr-green);
 }
 
 .install-step h4 {
   margin-top: 4px;
-  font-size: 13.5px;
+  font-size: 13px;
   font-weight: 700;
 }
 
 .install-step p {
-  margin-top: 4px;
+  margin-top: 3px;
   font-size: 12px;
   color: var(--text-secondary);
 }
 
 .terminal-block {
-  background: #060608;
-  border: 1px solid #22222b;
-  border-radius: 12px;
-  padding: 14px 16px;
+  background: #050507;
+  border: 1px solid #1d1d24;
+  border-radius: 10px;
+  padding: 12px 14px;
   font-family: var(--font-mono);
   font-size: 12px;
   color: #d6d6e0;
   overflow-x: auto;
 }
 
-.terminal-block .cmd-comment {
-  color: #6b6b78;
+.copy-chip-btn {
+  padding: 4px 9px;
+  border-radius: 6px;
+  background: #16161b;
+  border: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #ffffff;
 }
 
 .qr-showcase-card {
@@ -500,34 +396,32 @@ section {
 
 .qr-tabs {
   display: inline-flex;
-  padding: 4px;
-  border-radius: 10px;
-  background: #09090c;
+  padding: 3px;
+  border-radius: 9px;
+  background: #121216;
   border: 1px solid var(--border-subtle);
   gap: 4px;
 }
 
 .qr-tab-btn {
-  padding: 7px 13px;
-  border-radius: 7px;
+  padding: 6px 12px;
+  border-radius: 6px;
   font-size: 12px;
   font-weight: 650;
   color: var(--text-secondary);
-  transition: all 0.16s ease;
 }
 
 .qr-tab-btn.active {
-  background: rgba(255, 255, 255, 0.11);
+  background: #222229;
   color: #ffffff;
 }
 
 .qr-large-stage {
-  width: 224px;
-  height: 224px;
-  padding: 12px;
+  width: 208px;
+  height: 208px;
+  padding: 11px;
   background: #ffffff;
-  border-radius: 22px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
 }
 
 .qr-large-stage img {
@@ -535,40 +429,34 @@ section {
   height: 100%;
 }
 
-/* ==========================================================================
-   Technical FAQ Accordion
-   ========================================================================== */
-
+/* FAQ */
 .faq-list {
   display: grid;
-  gap: 12px;
-  max-width: 920px;
+  gap: 10px;
+  max-width: 860px;
   margin: 0 auto;
 }
 
 .faq-item {
-  background: var(--surface-1);
+  background: #09090b;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  overflow: hidden;
-  transition: border-color 0.2s ease;
 }
 
 .faq-item[open] {
   border-color: var(--border-strong);
-  background: #15151b;
 }
 
 .faq-item summary {
   list-style: none;
   cursor: pointer;
-  padding: 18px 22px;
-  font-size: 16px;
-  font-weight: 680;
+  padding: 16px 20px;
+  font-size: 15px;
+  font-weight: 660;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 14px;
 }
 
 .faq-item summary::-webkit-details-marker {
@@ -576,51 +464,37 @@ section {
 }
 
 .faq-chevron {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.06);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   font-family: var(--font-mono);
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-secondary);
-  transition: transform 0.2s ease;
-  flex-shrink: 0;
+  transition: transform 0.18s ease;
 }
 
 .faq-item[open] .faq-chevron {
   transform: rotate(45deg);
   color: #ffffff;
-  background: var(--amr-crimson-soft);
 }
 
 .faq-answer {
-  padding: 0 22px 20px;
-  font-size: 14.5px;
+  padding: 0 20px 18px;
+  font-size: 14px;
   color: var(--text-secondary);
-  line-height: 1.66;
+  line-height: 1.62;
 }
 
 .faq-answer code {
-  background: rgba(255, 255, 255, 0.07);
-  padding: 2px 6px;
-  border-radius: 5px;
-  font-size: 12.5px;
+  background: #15151a;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 12px;
   color: #f2f2f7;
 }
 
-/* ==========================================================================
-   Site Footer & Quick QR Modal
-   ========================================================================== */
-
+/* Footer & Modals */
 .site-footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 48px 0 56px;
-  background: rgba(5, 5, 7, 0.85);
-  position: relative;
-  z-index: 2;
+  border-top: 1px solid #18181d;
+  padding: 40px 0 48px;
+  background: #000000;
 }
 
 .footer-grid {
@@ -628,7 +502,7 @@ section {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: 20px;
 }
 
 .footer-links {
@@ -647,9 +521,8 @@ section {
   position: fixed;
   inset: 0;
   z-index: 300;
-  background: rgba(0, 0, 0, 0.78);
+  background: rgba(0, 0, 0, 0.86);
   backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -662,34 +535,47 @@ section {
 
 .qr-modal-card {
   width: 100%;
-  max-width: 400px;
-  background: #121217;
+  max-width: 380px;
+  background: #0d0d10;
   border: 1px solid var(--border-strong);
-  border-radius: 24px;
-  padding: 26px;
+  border-radius: 22px;
+  padding: 24px;
   text-align: center;
-  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.85);
 }
 
 .qr-modal-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .qr-modal-close {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
+  background: #1a1a20;
   font-size: 18px;
   color: var(--text-secondary);
 }
 
-/* ==========================================================================
-   Responsive Breakpoints
-   ========================================================================== */
+/* Lightbox for Real Retina Screenshots */
+.lightbox-card {
+  max-width: min(1160px, 95vw);
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.lightbox-card img {
+  max-height: 82vh;
+  width: auto;
+  border-radius: 16px;
+  border: 1px solid var(--border-strong);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.95);
+}
 
 @media (max-width: 1040px) {
   .hero-grid,
@@ -718,37 +604,34 @@ section {
     white-space: normal;
     text-align: center;
     height: auto;
-    min-height: 44px;
-    padding: 10px 16px;
+    min-height: 42px;
+    padding: 9px 15px;
   }
   .btn-nav-download,
   .nav-actions .btn-ghost {
-    min-height: 34px;
-    height: 34px;
-    padding: 0 11px;
+    min-height: 32px;
+    height: 32px;
+    padding: 0 10px;
     font-size: 12px;
     white-space: nowrap;
   }
   section {
-    padding: 64px 0;
+    padding: 56px 0;
   }
   .hero-section {
-    padding: 40px 0 44px;
+    padding: 36px 0 40px;
   }
   .hero-cta-row .btn {
     width: 100%;
   }
-  .hero-qr-body {
-    grid-template-columns: minmax(0, 1fr);
-    justify-items: center;
-    text-align: center;
-  }
-  .hero-qr-specs {
-    justify-content: center;
-  }
+  .hero-qr-body,
   .telemetry-strip,
   .install-steps {
     grid-template-columns: minmax(0, 1fr);
+  }
+  .hero-qr-body {
+    justify-items: center;
+    text-align: center;
   }
   .download-card,
   .qr-showcase-card {

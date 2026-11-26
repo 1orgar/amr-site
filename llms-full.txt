@@ -53,7 +53,7 @@ AMR includes a studio-grade real-time 64-bit DSP engine written in pure Swift (`
 
 ### 4.1 Three Output Topologies
 1. **`Bit-Perfect Passthrough` (Default)**: `100%` bit-identical PCM output (`44.1–192 kHz`) with zero DSP overhead.
-2. **`DSD DoP v1.1 (7EC SDM)`**: Converts PCM into 1-bit high-rate `DSD64` (`2.8224 MHz`, `176.4 kHz` DoP), `DSD128` (`5.6448 MHz`, `352.8 kHz` DoP), `DSD256` (`11.2896 MHz`, `705.6 kHz` DoP), or `DSD512` (`22.5792 MHz`, `1411.2 kHz` DoP) packed in lossless `DoP v1.1` (`0x05 / 0xFA` markers) so USB DACs and DDCs (Topping, SMSL PO100 PRO, Holo Audio, Denafrips, Chord, Matrix) engage their direct native DSD path.
+2. **`DSD DoP v1.1 (7EC SDM)`**: Converts PCM into 1-bit high-rate `DSD64` (`2.8224 / 3.072 MHz`, `176.4 / 192 kHz` DoP), `DSD128` (`5.6448 / 6.144 MHz`, `352.8 / 384 kHz` DoP), or `DSD256` (`11.2896 / 12.288 MHz`, `705.6 / 768 kHz` DoP) packed in lossless `DoP v1.1` (`0x05 / 0xFA` markers) so USB DACs and DDCs (Topping, SMSL PO100 PRO, Holo Audio, Denafrips, Chord, Matrix) engage their direct native DSD path up to macOS CoreAudio's `705.6 / 768 kHz` USB Audio Class 2 ceiling.
    - **7th-Order Chebyshev Zero Modulator (`7EC`)**: Three selectable Noise Transfer Function (`NTF`) Out-of-Band Gain profiles: `7EC-Transient (OBG = 1.38)`, `7EC-Balanced (OBG = 1.50)`, and `7EC-Super (OBG = 1.62, >155 dB SNR)`.
    - **Viterbi Trellis Look-Ahead (`M = Off / 4 / 8 / 16`)**: Evaluates `M` parallel integrator state branches 8–16 clocks ahead to eliminate idle tones and noise-floor modulation.
    - **ISI Regularizer**: Penalizes excessive high-frequency `0101` bit transitions in the Viterbi cost metric to minimize physical 1-bit DAC Inter-Symbol Interference distortion in the vocal midrange.
@@ -136,7 +136,7 @@ Runs 100% locally on Apple Silicon's Neural Engine (`FoundationModels`, `Natural
 | Full Apple Music Catalog & Personal Mixes | Yes (Native) | Yes | Local Library Only | Passive Utility Only | No (Qobuz/Tidal/Local only) |
 | Auto Hardware DAC Rate Sync (`44.1–192 kHz`) | Yes (`0.0 dBFS`) | No (`44.1/48 kHz` cap, often AAC) | Manual Mac Setup | Yes (No Remote UI) | Yes (No Apple Music) |
 | Real-Time `4096-pt FFT` Fake Hi-Res Verifier | Yes (5 Verdicts + LSB) | No | No | No | No |
-| `DSD64–512 DoP` & `768 kHz LNS15 NOS` DSP | Yes (`AMX FP64` + `Metal`) | No | No | No | Yes (`$15/mo` or `$830`) |
+| `DSD64–256 DoP` & `768 kHz LNS15 NOS` DSP | Yes (`AMX FP64` + `Metal`) | No | No | No | Yes (`$15/mo` or `$830`) |
 | `64-Bit` Room Auto-PEQ via iPhone Mic | Yes (Harman Target) | No | No | No | Manual Parametric EQ |
 | Mastering De-Clipper & Weiss De-Esser | Yes (`64-bit` Pre-DSP) | No | No | No | No |
 | External Amp TCP + Hardware SoundCheck | Rotel, Hegel, Denon, NAD, Lyngdorf | No | No | No | Partial Partner Devices |

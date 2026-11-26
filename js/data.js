@@ -457,8 +457,8 @@ window.AMR_DATA = {
       protocol: "USB DAC + Passthrough + DLNA"
     },
     hybrid_dsp: {
-      title: "AMX FP64 / Metal GPU df64 → 7EC DSD512 & LNS15 NOS",
-      summary: "65,536-tap AMX polyphase FIR or 262,144-tap Metal GPU Overlap-Save Kaiser convolution feeding a 7th-order 7EC Viterbi Trellis (M=16) DSD64–512 DoP modulator or 768 kHz LNS15 psychoacoustic shaper.",
+      title: "AMX FP64 / Metal GPU df64 → 7EC DSD256 & LNS15 NOS",
+      summary: "65,536-tap AMX polyphase FIR or 262,144-tap Metal GPU Overlap-Save Kaiser convolution feeding a 7th-order 7EC Viterbi Trellis (M=16) DSD64–256 DoP modulator or 768 kHz LNS15 psychoacoustic shaper.",
       framework: "Accelerate AMX • Metal GPU Shaders",
       threading: "Dedicated High-Priority DSP Worker",
       latency: "> 155 dB Image Rejection",
@@ -470,7 +470,7 @@ window.AMR_DATA = {
       framework: "CoreAudio HAL • AudioToolbox",
       threading: "Hardware Clock Driven",
       latency: "0.0 dBFS Bit-Perfect",
-      protocol: "44.1 kHz – 1.536 MHz / DSD512"
+      protocol: "44.1 – 768 kHz PCM / DSD256 DoP"
     },
     amp_tcp: {
       title: "ExternalAmpTCPController & Hardware SoundCheck",
